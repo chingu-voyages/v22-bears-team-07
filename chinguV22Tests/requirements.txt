@@ -1,0 +1,6 @@
+#requirements:
+
+# pip install pyAudio (pipwin for windows)
+# pip install SpeechRecognition
+# pip install gTTS
+# pip install playsound
