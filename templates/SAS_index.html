@@ -12,13 +12,14 @@
     <!-- Style sheets -->
     <link rel="stylesheet" href={{ url_for('static', filename='css/home.css')}} />
     <link rel="stylesheet" href={{ url_for('static', filename='css/ham_nav.css')}} />
-    <link rel="icon" href={{ url_for('static', filename='images/SAS_log.png')}}/>
+    <link rel="icon" href={{ url_for('static', filename='images/SAS_logo.png')}}/>
     <!-- Font awesome SVG-->
     <script src="https://kit.fontawesome.com/b570a31fd0.js" crossorigin="anonymous"></script>
 
     <title>Sound And Silence</title>
 </head>
 <body id="body">
+
     <nav class='ham_nav' id="my_nav">
 
         <div class="nav_link_menu" id="nav_link_menu">
@@ -27,7 +28,26 @@
         </div>
         <i class="fas fa-bars" id="hamburger" value="ON" aria-label="this icon when clicked will hide or show the menu link items"></i>
     </nav>
+
 <main id="main">
+
+  <h1 id="main_header" class="main-header"> Sound and Silence </h1>
+
+
+  <section id="Introduction">
+
+    <div class="image-and-text" id="intro-section">
+      <image id="forest_trees" class="fade-in" src={{ url_for('static', filename='images/trees.jpg')}} alt="A hiker stands alone in the shadows of giant pines. Their age made even more
+      observable by the many empty and broken branches sticking out from the towering trunks. Sunshine does not reach down to this trail and the canopy of
+      the needles way above are collecting and hording all light they can."></image>
+
+      <p>
+        In html one can add an alt="this is a picture of ...", in the file so that when an image is broken, the text replaces the image.<br>
+        Even more important than that, these alt attributes can let those using certain technologies read to the user what the image description is.<br>
+        Below is a button, if you click it, it will read to you the alt description of the image. <br>
+      </p>
+
+    </div>
 
 </main>
 <footer id="footer">
