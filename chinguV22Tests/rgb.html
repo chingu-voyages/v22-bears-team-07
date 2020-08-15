@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Nellie Tobey">
+    <meta name="description" content="A test for showing examples of visual accessibility issues.">
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="rgb.css"/>
+
+<title>Visual accessibility</title>
+</head>
+<body>
+<h1 class="full-center"> Visual Perspective </h1>
+<main>
+<section id="contrast_section">
+<p class="grow"> If you've ever seen the RGB(0, 2, 244); in a css file, these three numbers<br>
+    can control what color appears for an item depending on the saturation of <br>
+    either the red, RGB(red, green, blue), the green, or the blue.  In making<br>
+    a page as visibile to all users as possible, these colors should contrast <br>
+    in such a way that the color blind can still detect the item, the text, the image<br>
+    even when the color may have the specific hue that their eyes can not see.
+    </p>
+
+
+
+<div class="control-box">
+  <h3 id="rgb_header"> Change me with the sliders below </h3>
+<div class="slider-box">
+<div class='toggle-box'>
+<button type='button' id='background'>BACKGROUND</button>
+<button type='button' id='text'>TEXT</text>
+</div>
+  <div class="label-box">
+  <label for="change_which" id="back_label">BACKGROUND</label>
+  <lable for="change_which">TEXT</label>
+  </div>
+      <input type="range" id="red" name="red" step="1"
+         min="0" max="255">
+  <label for="red">RED</label>
+  <input type="range" id="blue" name="blue" step="1"
+         min="0" max="255">
+  <label for="blue">BLUE</label>
+  <input type="range" id="green" name="green" step="1"
+         min="0" max="255">
+  <label for="green">GREEN</label>
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+</body>
+
+<footer>
+</footer>
+</html>
