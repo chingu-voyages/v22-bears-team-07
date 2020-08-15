@@ -16,6 +16,16 @@ h1, h2, h3, h4 {
   width: 100vw;
   text-align: center;
 }
+
+.overlay {
+    margin-top: 100px;
+    color: white;
+    position: absolute;
+    margin-left: 2vw;
+    background: linear-gradient(45deg,transparent, #3e5763, transparent);
+    width: 100%;
+    text-align: center;
+}
 footer {
     display: flex;
     align-items: center;
