@@ -8,11 +8,68 @@
     <meta name="description" content="A test for showing examples of visual accessibility issues.">
     <!-- stylesheets -->
     <link rel="stylesheet" href="rgb.css"/>
+    <!-- javascript -->
+    <script type="text/javascript" src="rgb.js"></script>
 
 <title>Visual accessibility</title>
 </head>
 <body>
-<h1 class="full-center"> Visual Perspective </h1>
+
+  <h2 class="center">
+  <svg height="3em" width="100%">
+  <style>
+
+
+  .thin {
+
+    font-weight: 200;
+    animation: myanimation 6s linear;
+    animation-fill-mode: forwards;
+    font-size: 2em;
+    fill:white;
+  }
+  .thick {
+
+    fill: silver;
+    font-weight: 100;
+    font-size: 2em;
+    animation: myanimation 6s reverse;
+  }
+  @keyframes myanimation {
+    0% {
+      fill: black;
+      color: black;
+      font-weight: 0;
+      text-shadow: -1px -1px 3px silver;
+    }
+    25% {
+      fill: blue;
+      color: blue;
+      text-shadow: -1px -2px green;
+    }
+    50% {
+      fill: silver;
+      color: silver;
+      font-weight: 100;
+      text-shadow: none;
+    }
+    75%{
+      fill: lime;
+      color: lime;
+      text-shadow: 1px 2px 3px yellow;
+    }
+    100% {
+      fill: white;
+      color: white;
+      font-weight: 300;
+      text-shadow: 1px 1px 3px black;
+    }
+  }
+  </style>
+  <text  x="0" y="50" transform="skewX(3)" class="thick">Visual Perception</text>
+  <text  x="0" y="50"  class="thin tilt-right">Visual Perception</text>
+</svg>
+</h2>
 <main>
 <section id="contrast_section">
 <p class="grow"> If you've ever seen the RGB(0, 2, 244); in a css file, these three numbers<br>
@@ -28,22 +85,23 @@
 <div class="control-box">
   <h3 id="rgb_header"> Change me with the sliders below </h3>
 <div class="slider-box">
+  <h3 id="current">Current item:  TEXT</h3>
+
+
+
 <div class='toggle-box'>
-<button type='button' id='background'>BACKGROUND</button>
-<button type='button' id='text'>TEXT</text>
+<button type='button' id='background' onclick="set_BACKGROUND()">BACKGROUND</button>
+<button type='button' id='text' onclick="set_TEXT()">TEXT</text>
 </div>
-  <div class="label-box">
-  <label for="change_which" id="back_label">BACKGROUND</label>
-  <lable for="change_which">TEXT</label>
-  </div>
+
       <input type="range" id="red" name="red" step="1"
-         min="0" max="255">
+         min="0" max="255" onchange="set_RED(this.value)">
   <label for="red">RED</label>
   <input type="range" id="blue" name="blue" step="1"
-         min="0" max="255">
+         min="0" max="255" onchange="set_BLUE(this.value)">
   <label for="blue">BLUE</label>
   <input type="range" id="green" name="green" step="1"
-         min="0" max="255">
+         min="0" max="255" onchange="set_GREEN(this.value)">
   <label for="green">GREEN</label>
 </div>
 

@@ -1,6 +1,28 @@
 /* css file for rgb test */
 /* chingu V22 test item */
+label {
+  width: 100vw;
+  align-items: center;
+  text-align: center;
+}
 
+#red {
+   -webkit-appearance: none;
+   border: 1px solid red;
+   background: linear-gradient(45deg, #504747, #f1e1e1fa);
+}
+#green {
+   -webkit-appearance: none;
+   border: 1px solid green;
+   background: linear-gradient(45deg, #556353, #e0f7defa);
+
+}
+#blue {
+   -webkit-appearance: none;
+   border: 1px solid blue;
+   background: linear-gradient(45deg, #525873, #e5e4f7fc);
+
+}
 body {
 display: flex;
 flex-direction: column;
@@ -102,4 +124,12 @@ color: rgb(0, 0, 0);
 width: 100vw;
 padding: 3ch;
 text-align: center;
+}
+.center {
+  margin-left: 39%;
+  text-align: center;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
