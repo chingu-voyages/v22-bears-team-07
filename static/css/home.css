@@ -16,12 +16,14 @@ header {
   color: #997555;
   text-shadow: 1px 1px black, -1px 1px darkgrey;
 }
+
+/* footer can be pushed down or up using the margin-top value */
 footer {
-    position: fixed;
+    position: static;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 10vh;
+    margin-top: 30vh;
     width: 100vw;
     bottom: 0px;
     color: inherit;
