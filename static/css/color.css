@@ -1,0 +1,158 @@
+body{
+background: black;
+color: white;
+
+}
+main {
+color: white;
+background: black;
+}
+
+canvas {
+background: linear-gradient(90deg, white, black);
+height: 300px;
+}
+
+#wheel_container {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+/* -----  NAV ------ */
+nav {
+    display: flex;
+    flex-direction: row;
+    background: #c8f6fc;
+    border-bottom: 2px solid #997555;
+    color: #f7e5eb;
+    padding-bottom: 2vh;
+}
+
+
+.fixed-menu {
+  position: fixed;
+  z-index: 33;
+  background: inherit;
+  margin-right: 10px;
+}
+/* a : hover can be set by page template css  */
+
+.ham_home_link {
+    margin-left: 20px;
+    border: solid 1px silver;
+    border-radius: 10%;
+    padding: 2px !important;
+}
+
+    .ham_home_link:hover {
+        animation-name: background-color;
+        animation-duration: 2000ms;
+        animation-fill-mode: forwards;
+    }
+
+@keyframes background-color {
+    0% {
+        color: rgb(100, 0, 100);
+        background-color: rgb(255, 200, 255);
+    }
+    25% {
+      color: white;
+      background-color: rgb(200, 200, 210);
+    }
+
+    50% {
+        color: rgb(200, 0, 200);
+        background-color: rgb(150, 100, 150);
+    }
+    75% {
+      color: white;
+      background-color: rgb(100, 200, 100);
+    }
+
+    100% {
+        background-color: rgba(200, 100, 200, 0.5);
+
+        transform: scale(1.1);
+    }
+}
+
+.nav_link_menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100vw;
+    /*background: radial-gradient(black, transparent);*/
+    background: linear-gradient(#5b858c, transparent), linear-gradient(45deg, #50411c, transparent);
+}
+
+.ham_nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    color: #f7e5eb;
+}
+
+    .ham_nav a {
+        text-decoration: none;
+        font-weight: bold;
+        width: auto;
+        padding: 2vw;
+        /*color: white;*/
+        color: #c8f6fc;
+    }
+
+.Content_view {
+    color: white;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#hamburger {
+
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: solid 1px silver;
+    border-radius: 10%;
+    margin: 20px;
+    color: black;
+}
+
+
+/* MOBILE */
+@media all and (max-width: 799px) and (min-width: 220px) {
+    .nav_link_menu {
+        flex-direction: column;
+    }
+}
+
+
+/* custom items for color.html that may also live in home.css */
+#hero_image {
+    color: white;
+    background-color: white;
+    background: #c8f6fc;
+    border-radius: 15%;
+    padding: 10px;
+}
+header {
+width: 100vw;
+text-align: center;
+font-size: 2.5em;
+
+}
+#footer {
+  background: linear-gradient(#5b858c, transparent), linear-gradient(45deg, #50411c, transparent);
+}
+#title {
+ text-shadow: 1px 1px 3px #c8f6fc, 2px -2px 3px purple, -3px 2px 2px green, -3px -3px 5px #50411c;
+
+}
