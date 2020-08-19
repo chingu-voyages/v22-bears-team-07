@@ -12,9 +12,11 @@
     <!-- Style sheets -->
     <link rel="stylesheet" href={{ url_for('static', filename='css/home.css')}} />
     <link rel="stylesheet" href={{ url_for('static', filename='css/ham_nav.css')}} />
-    <link rel="icon" href={{ url_for('static', filename='images/SAS_log.png')}}/>
+    <link rel="icon" href={{ url_for('static', filename='images/SAS_logo.png')}}/>
     <!-- Font awesome SVG-->
     <script src="https://kit.fontawesome.com/b570a31fd0.js" crossorigin="anonymous"></script>
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@700&display=swap" rel="stylesheet">
 
     <title>Sound And Silence</title>
 </head>
@@ -22,13 +24,42 @@
     <nav class='ham_nav' id="my_nav">
 
         <div class="nav_link_menu" id="nav_link_menu">
-            <a  class="ham_link" href="/color">Color and Contrast</a>
-            <a class="ham_link" href="#footer">BOTTOM</a>
+           <a class="ham_home_link" id="nav-hero" href="#" aria-label="home Sound and Silence"><image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image></a>
+           <div class="flex-center">
+           <a  class="ham_link" href="/color">Color and Contrast</a>
+           <a class="ham_link" href="#footer">Bottom</a>
+         </div>
         </div>
-        <i class="fas fa-bars" id="hamburger" value="ON" aria-label="this icon when clicked will hide or show the menu link items"></i>
+        <i class="fas fa-bars fa-2x" id="hamburger" value="ON" aria-label="this icon when clicked will hide or show the menu link items"></i>
     </nav>
 <main id="main">
+<header id="page-title"> Sound and Silence </header>
+<section id="Alt">
 
+  <header id="section-alt-title"> Alt attributes </header>
+  <div class="audio-bar">
+  <button class="audio-button" id="image-iris-button" aria-label="button to listen to javascript enabled text to voice for alt attribute on first image."><i class="fas fa-assistive-listening-systems fa-2x"></i></button>
+  <button class="audio-button" id="image-camera-button" aria-label="button to listen to javascript enable text to voice for alt attribute on second image."><i class="fas fa-assistive-listening-systems fa-2x"></i></button>
+  <button class="audio-button" id="image-cpu-button" aria-label="button to listen to javascript enabled text to voice for alt attribute on third image."><i class="fas fa-assistive-listening-systems fa-2x"></i></button>
+  </div>
+  <article>
+    <image src={{ url_for('static', filename="images/iris.jpg")}} alt="Close up photo of the human iris. From Wickipedia, the iris is is a thin, annular structure in the eye, responsible for controlling the diameter and size of the pupil and thus the amount of light reaching the retina. Eye color is defined by that of the iris. In optical terms, the pupil is the eye's aperture, while the iris is the diaphragm. This iris has an outer edge that is cool as water, and the inner ring is chocolate. A combination known as hazel."></image>
+    <image src={{ url_for('static', filename="images/camera.jpg")}} alt="A classic style camera sits on a bed of hand sized, smooth rocks. The camera's shutter works like the eye's retina and iris.  The lens helps transfer the image, and as the shutters open to let light in to be captured, the film inside is exposed to the light rays which give us the 2 dimensional layout of the object in color, or black and white depending on the film."></image>
+
+    <image src={{ url_for('static', filename="images/laptop.jpg")}} alt="A photo, view from above, of a table where a laptop, a pair of noise canceling headphones and a camera sit. Screenreaders use alt image attributes to read to the user what the image is, it's description, or perhaps the story it tells."></image>
+
+  <p class="overlay-p">
+      They say a picture is worth a thousand words, but imagine if there was no image.<br>  Now what story are we trying to tell?
+      <br>
+      While some images are just for design and decoration, if an image tells a story, the alt attribute can assist those who don't have access to the image by telling them
+      the story, the thousand words that may otherwise be unaccessible to them.
+      <br>
+      Click on the buttons above the images to hear the alt attributes.
+
+    </p>
+
+
+  </article>
 </main>
 <footer id="footer">
     <image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image>

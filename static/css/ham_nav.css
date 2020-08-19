@@ -5,9 +5,9 @@ nav {
     display: flex;
     flex-direction: row;
     background: inherit;
+    height: 15vh;
     border-bottom: 2px solid #997555;
     color: #f7e5eb;
-    padding-top: 2vh;
     padding-bottom: 2vh;
 }
 
@@ -16,8 +16,8 @@ nav {
 .ham_home_link {
     align-content: flex-start;
     padding: 10px;
-    border: solid 1px silver;
-    border-radius: 10%;
+    border: none;
+    margin-right: 10vw;
 }
 
     .ham_home_link:hover {
@@ -43,15 +43,24 @@ nav {
         transform: scale(1.1);
     }
 }
+.overlay-p {
+    position: absolute;
+    z-index: 33;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
 
 .nav_link_menu {
+    height: 12vh;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
     width: 100vw;
-    /*background: radial-gradient(black, transparent);*/
-    background: radial-gradient(#f7e5eb7d, transparent);
+    background: linear-gradient(90deg, #f7e5eb7d, transparent);
 }
 
 .ham_nav {
@@ -60,6 +69,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     color: #f7e5eb;
+    background: linear-gradient(60deg, #a1aca426, transparent), linear-gradient(45deg, #7dacb991, #a29952);
 }
 
     .ham_nav a {
@@ -68,7 +78,8 @@ nav {
         width: auto;
         padding: 2vw;
         /*color: white;*/
-        color: #132516; 
+        color: #7b0519;
+        text-shadow: 1px 1px #f5f3f2;
     }
 
 .Content_view {
@@ -97,5 +108,8 @@ nav {
 @media all and (max-width: 799px) and (min-width: 220px) {
     .nav_link_menu {
         flex-direction: column;
+    }
+    .flex-center {
+      flex-direction: column;
     }
 }

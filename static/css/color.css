@@ -81,7 +81,7 @@ nav {
 .nav_link_menu {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    /*justify-content: flex-end;*/
     align-items: center;
     width: 100vw;
     /*background: radial-gradient(black, transparent);*/
