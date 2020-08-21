@@ -4,10 +4,6 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hello_world():
-    return ('Hello World from the backend')
-
-@app.route('/index')
 def index():
     return render_template('SAS_index.html')
 
@@ -15,7 +11,7 @@ def index():
 def color():
 
     if request.method == 'GET':
-        return render_template('color.html')
+        return render_template('colorV2.html')
     if request.method == 'POST':
         pass
         # redirect to end the POST handling
