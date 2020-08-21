@@ -2,12 +2,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-
 @app.route('/')
-def hello_world():
-    return ('Hello World from the backend')
-
-@app.route('/index')
 def index():
     return render_template('SAS_index.html')
 
