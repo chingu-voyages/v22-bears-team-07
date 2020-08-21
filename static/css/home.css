@@ -5,6 +5,8 @@
     color: black;
     font-family: 'Red Rose', cursive;
 }
+
+/* CHANGES to img, may effect #hero_image */
 img {
   width: 25vw;
 
@@ -70,8 +72,8 @@ p{
   box-shadow: 1px 2px 3px #c1c2c6;
 }
 #hero_image {
-    width: 5vw;
-    height: 10vh;
+    height: 50px;
+    width: 60px;
 }
 
 

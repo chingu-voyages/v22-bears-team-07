@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+        <meta name="author" content="Regina & Nellie">
+        <meta name="description" content="Created for Chingu Voyage 22, a site to discover the possibilities of accessibility.">
+    <!-- images/icons/googlefonts/fontawesome -->
+    <link rel="icon" href={{ url_for('static', filename='images/SAS_logo.png')}} />
+    <!-- Font awesome SVG-->
+    <script src="https://kit.fontawesome.com/b570a31fd0.js" crossorigin="anonymous"></script>
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@700&display=swap" rel="stylesheet">
+    <!--Stylesheets-->
+    <link rel="stylesheet" href={{ url_for('static', filename='css/colorwheelV2.css')}}/>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/ham_nav.css')}} />
+    <!-- javascript -->
+    <script type="text/javascript" src={{ url_for('static', filename='js/colorwheelV2.js')}}></script>
+      <script type="text/javascript" src={{ url_for('static', filename='js/ham_nav.js')}}></script>
+
+    <title>Contrast and Color</title>
+</head>
+<body id="body">
+  <!-- NAV BAR -->
+<nav class='ham_nav' id="my_nav">
+
+      <div class="nav_link_menu" id="nav_link_menu">
+         <a class="ham_home_link" id="nav-hero" href="/" aria-label="home Sound and Silence"><image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image></a>
+         <div class="flex-center">
+         <a  class="ham_link" href="/color">Color and Contrast</a>
+         <a class="ham_link" href="#footer">Bottom</a>
+       </div>
+      </div>
+      <i class="fas fa-bars fa-2x" id="hamburger" value="ON" aria-label="this icon when clicked will hide or show the menu link items"></i>
+  </nav>
+
+    <header id="title" class="title">
+        <h1 class="thin"> Interactive Color Wheel</h1>
+    </header>
+    <!-- MAIN CONTENT -->
+    <main id="main">
+        <hr />
+        <!--- COLOR WHEEL VALUES -->
+        <div id="rgb_bar">
+            <h3 id="rgb_value1">
+                RGB(0, 0, 0)
+            </h3>
+            <h3 id="rgb_value2">
+                RGB(255, 255, 255)
+            </h3>
+        </div>
+        <hr />
+        <div id="contrast_bar">
+            <h3 id="radian_value">
+                180 degrees
+            </h3>
+            <h3 id="distance">
+                distance: (> 240)
+            </h3>
+        </div>
+        <hr />
+        <div id="contrast_bar">
+            <h3 id="contrast_value">contrast: 100%</h3>
+        </div>
+        <hr />
+        <!-- COLOR WHEEL INTERACTION -->
+        <div class="screen" style="background-image: url('static/images/color_wheel.png')">
+      <canvas id="mycanvas">
+
+      </canvas>
+            </div>
+    </main>
+    <footer id="footer">
+        <image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image>
+        <h3 class="footer-info">Chingu Voyage 22 Bear team 07:  Regina and Nellie</h3>
+    </footer>
+</body>
+</html>

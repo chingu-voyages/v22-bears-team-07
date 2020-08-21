@@ -10,7 +10,7 @@ def index():
 def color():
 
     if request.method == 'GET':
-        return render_template('color.html')
+        return render_template('colorV2.html')
     if request.method == 'POST':
         pass
         # redirect to end the POST handling
