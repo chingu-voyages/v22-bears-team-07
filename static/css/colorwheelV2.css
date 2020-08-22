@@ -46,7 +46,26 @@ hr {
     height: 5px;
     background: linear-gradient(45deg, transparent, red, blue, yellow, green, transparent);
 }
+#default_picker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+#hex_colo1 {
+  margin-right: 5px;
+}
+#default_picker input {
+  padding: 5px;
+  border: none;
+}
+input[type=color] {
+  border-radius: 50%;
+  height: 8ch;
+  width: 8ch;
+  overflow: hidden;
+  display: block;
+}
 svg {
     width: 100%;
     position: absolute;
@@ -148,5 +167,11 @@ footer {
 @media all and (max-width: 799px) and (min-width: 220px) {
   #title {
     font-size: 1em;
+  }
+  #default_picker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
