@@ -19,6 +19,7 @@
     <!-- javascript -->
     <script type="text/javascript" src={{ url_for('static', filename='js/colorwheelV2.js')}}></script>
       <script type="text/javascript" src={{ url_for('static', filename='js/ham_nav.js')}}></script>
+      <script type="text/javascript" src={{ url_for('static', filename='js/color_calc.js')}}></script>
 
     <title>Contrast and Color</title>
 </head>
@@ -63,6 +64,14 @@
         <hr />
         <div id="contrast_bar">
             <h3 id="contrast_value">contrast: 100%</h3>
+        </div>
+        <div id="default_picker" aria-label="The input will bring up the default color picker from your system. Because the wheel system can not be accurate to the pixel, your color choice can be better defined with the system picker.">
+
+
+           <label for="hex_colo1">COLOR</label>
+            <input type="color" id="hex_color1"/>
+            <label for="hex_color2">COLOR</label>
+            <input type="color" id="hex_color2" />
         </div>
         <hr />
         <!-- COLOR WHEEL INTERACTION -->
