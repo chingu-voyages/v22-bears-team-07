@@ -96,7 +96,7 @@ function return_RGB1() {
 
     rgblist = [R, G, B]
   }
-  console.log('rgb ONE list: ', rgblist)
+  //console.log('rgb ONE list: ', rgblist)
   return rgblist
 }
 
