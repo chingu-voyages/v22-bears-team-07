@@ -49,7 +49,7 @@
                 RGB(0, 0, 0)
             </h3>
             <h3 id="rgb_value2">
-                RGB(255, 255, 255)
+                RGB(0, 0, 0)
             </h3>
         </div>
         <hr />
@@ -73,10 +73,17 @@
             <label for="hex_color2">COLOR</label>
             <input type="color" id="hex_color2" />
         </div>
+        <div class="flex-center-sm">
+        <button id="check_wheel" aria-label="get the approximate location of the colors on the wheel image">Check wheel</button>
+      </div>
+      
+
         <hr />
         <!-- COLOR WHEEL INTERACTION -->
         <div class="screen" style="background-image: url('static/images/color_wheel.png')">
-      <canvas id="mycanvas">
+             <canvas id="mycanvas">
+             </canvas>
+        <div>
 
       </canvas>
             </div>

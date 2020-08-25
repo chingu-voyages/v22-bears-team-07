@@ -131,6 +131,27 @@ catch (error){
 
 }
 
+function test_wheel(){
+  let rgb1test = RGBobj1
+  let rgb2test = RGBobj2
+  console.log(rgb1test, rgb2test)
+  let r1 = RGBobj1.r
+  let g1 = RGBobj1.g
+  let b1 = RGBobj1.b
+  let r2 = RGBobj2.r
+  let g2 = RGBobj2.g
+  let b2 = RGBobj2.b
+  console.log('rgb1 = ', r1, g1, b1)
+  console.log('rgb2 = ', r2, g2, b2)
+}
+
+
+  function listen_wheel() {
+  let wheelbtn = document.getElementById('check_wheel')
+
+  wheelbtn.addEventListener('click', test_wheel)
+}
+
 
 function testlog(){
   console.log("---- TEST LOG -----")
@@ -147,10 +168,13 @@ function testlog(){
   //value2 = return_RGB2()
   //console.log(`RGB1 values = ${value1}`)
   //console.log(`RGB2 values = ${value2}`)
+  //test_wheel()
   console.log("----   END LOG ----")
 }
+
 window.addEventListener('load', (event)=> {
   set_DOM_COLORCALC();
   pickers_listen();
+  //listen_wheel();
 
 })
