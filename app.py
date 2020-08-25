@@ -19,6 +19,8 @@ def color():
 
     # redirect to home
     return render_template('SAS_index.html')
-
+@app.route('/asl', methods=['GET'])
+def asl():
+    return render_template('asl.html')
 if __name__ == "__main__":
   app.run(debug=True)
