@@ -13,6 +13,7 @@
     <script src="https://kit.fontawesome.com/b570a31fd0.js" crossorigin="anonymous"></script>
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine&display=swap" rel="stylesheet">
     <!--Stylesheets-->
     <link rel="stylesheet" href={{ url_for('static', filename='css/colorwheelV2.css')}}/>
     <link rel="stylesheet" href={{ url_for('static', filename='css/ham_nav.css')}} />
@@ -20,6 +21,7 @@
     <script type="text/javascript" src={{ url_for('static', filename='js/colorwheelV2.js')}}></script>
       <script type="text/javascript" src={{ url_for('static', filename='js/ham_nav.js')}}></script>
       <script type="text/javascript" src={{ url_for('static', filename='js/color_calc.js')}}></script>
+      <script type="text/javascript" src={{ url_for('static', filename='js/typeface.js')}}></script>
 
     <title>Contrast and Color</title>
 </head>
@@ -76,17 +78,50 @@
         <div class="flex-center-sm">
         <button id="check_wheel" aria-label="get the approximate location of the colors on the wheel image">Check wheel</button>
       </div>
-      
+
 
         <hr />
         <!-- COLOR WHEEL INTERACTION -->
         <div class="screen" style="background-image: url('static/images/color_wheel.png')">
              <canvas id="mycanvas">
              </canvas>
-        <div>
+        </div>
 
-      </canvas>
-            </div>
+
+
+            <hr />
+            <div class="theme-background">
+    <section id="typeface">
+      <article id="type_explained" class="rainbow">
+        <h4 id="typeface-title" class="flex-center rainbow">The importance of font selection.</h4>
+        <p id="type_paragraph" class="noblur">
+        The contrast of a page is very important to those who do not have typical eyesite.
+        <br> For example, if you, or someone you knows has to wear glass's for nearsightedness, imagine
+        They had to read this without their glasses.  Would they have to struggle?
+        <br>
+        Colorblindness can also play a role.  If your text color and background color are not sufficiently contrasted,
+        a yellow on green may become impossible for someone with <a href="https://www.color-blindness.com/deuteranopia-red-green-color-blindness/">deuteranomaly</a> to see.
+        Font types play a role in contrast in this way also.  If a text is thin, or the font is easily blurred into
+        visually incoherent blobs, or maybe non-existent, the information is now inaccessible.
+        Below, try changing the font, and blurring this article.  If the font is hard to read, it will be hard to
+        read for those that have visual differences.
+      </p>
+
+
+    </article>
+
+          <div class="flex-center rainbow white">
+            <label for='change_font'>Select font:</label>
+            <select id="change_font" >
+              <option value="normal" selected>original</option>
+              <option value="mono">monochromatic</option>
+              <option value="fancy">Fancy font</option>
+            </select>
+
+            <button class="type-btn rainbow" id="blur_font">blur</button>
+          </div>
+    </section>
+  </div>
     </main>
     <footer id="footer">
         <image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image>
