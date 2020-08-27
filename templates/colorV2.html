@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
 
-        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
         <meta name="author" content="Regina & Nellie">
         <meta name="description" content="Created for Chingu Voyage 22, a site to discover the possibilities of accessibility.">
     <!-- images/icons/googlefonts/fontawesome -->
@@ -47,30 +47,30 @@
         <hr />
         <!--- COLOR WHEEL VALUES -->
         <div id="rgb_bar">
-            <h3 id="rgb_value1">
+            <h2 id="rgb_value1">
                 RGB(0, 0, 0)
-            </h3>
-            <h3 id="rgb_value2">
+            </h2>
+            <h2 id="rgb_value2">
                 RGB(0, 0, 0)
-            </h3>
+            </h2>
         </div>
         <hr />
         <div id="contrast_bar">
-            <h3 id="radian_value">
+            <h2 id="radian_value">
                 180 degrees
-            </h3>
-            <h3 id="distance">
+            </h2>
+            <h2 id="distance">
                 distance: (> 240)
-            </h3>
+            </h2>
         </div>
         <hr />
         <div id="contrast_bar">
-            <h3 id="contrast_value">contrast: 100%</h3>
+            <h2 id="contrast_value">contrast: 100%</h2>
         </div>
         <div id="default_picker" aria-label="The input will bring up the default color picker from your system. Because the wheel system can not be accurate to the pixel, your color choice can be better defined with the system picker.">
 
 
-           <label for="hex_colo1">COLOR</label>
+           <label for="hex_color1">COLOR</label>
             <input type="color" id="hex_color1"/>
             <label for="hex_color2">COLOR</label>
             <input type="color" id="hex_color2" />
@@ -93,7 +93,7 @@
             <div class="theme-background">
     <section id="typeface">
       <article id="type_explained" class="rainbow">
-        <h4 id="typeface-title" class="flex-center rainbow">The importance of font selection.</h4>
+        <h3 id="typeface-title" class="flex-center rainbow">The importance of font selection.</h3>
         <p id="type_paragraph" class="noblur">
         The contrast of a page is very important to those who do not have typical eyesight.
         <br> If you, or someone you know has to wear glasses for nearsightedness, imagine
@@ -103,14 +103,15 @@
         a yellow on green may become impossible for someone with <a href="https://www.color-blindness.com/deuteranopia-red-green-color-blindness/">deuteranomaly</a> to see.
         Font types play a role in contrast in this way also.  If a text is thin, or the font is easily blurred into
         visually incoherent blobs, the information is now inaccessible.
-        Below, try changing the font, and blurring this article.  If the font is hard to read, it will be hard to
-        read for those that have visual differences.
+        If the font is hard to read, it will be hard to read for those that have visual differences.
+        <br><br>
+          Below, try changing the font with the selections, and blurring this article with the button.
       </p>
 
 
     </article>
 
-          <div class="flex-center rainbow white">
+          <div class="flex-center white">
             <label for='change_font'>Select font:</label>
             <select id="change_font" >
               <option value="normal" selected>original</option>
@@ -125,7 +126,7 @@
     </main>
     <footer id="footer">
         <image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image>
-        <h3 class="footer-info">Chingu Voyage 22 Bear team 07:  Regina and Nellie</h3>
+        <h4 class="footer-info">Chingu Voyage 22 Bear team 07:  Regina and Nellie</h4>
     </footer>
 </body>
 </html>

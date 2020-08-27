@@ -64,6 +64,9 @@ svg {
     width: 100%;
     position: absolute;
 }
+.highlight:hover {
+  animation: highlight 20s;
+}
 .thin {
     fill: #9D4853;
     color: white;
@@ -219,14 +222,29 @@ select {
 
 .white {
   background: white;
+  border: 3px solid silver;
 }
 
+.white:hover {
+  border: 3px solid aqua;
+}
+h2 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 1em;
+}
 h3 {
     margin: 0;
     padding: 0;
 }
 
-
+#blur_font:hover {
+  transform: scale(1.1);
+}
+select:hover {
+  transform: scale(1.2);
+}
 
 
 /*--- FOOTER NAV == HOME NAV/FOOTER ---*/
@@ -256,7 +274,20 @@ footer {
   padding: 2ch;
 
 }
-
+@keyframes highlight {
+  0% {
+    border: 1px inset red;
+  }
+  50% {
+    border: 1px inset green;
+  }
+  75% {
+    border: 1px inset blue;
+  }
+  100% {
+    border: 1px inset silver;
+  }
+}
 
 /* --- MOBILE -- */
 @keyframes myanimation1 {
