@@ -6,7 +6,7 @@
     <meta name="author" content="Regina & Nellie">
     <meta name="description" content="Created for Chingu Voyage 22, a site to discover the possibilities of accessibility.">
     <!-- JavaScript -->
-    <script type="text/javascript" src={{ url_for('static', filename='js/ham_nav.js')}}></script>
+    <script src={{ url_for('static', filename='js/ham_nav.js')}}></script>
     <!-- Style sheets -->
     <link rel="stylesheet" href={{ url_for('static', filename='css/ham_nav.css')}} />
     <link rel="stylesheet" href={{ url_for('static', filename='css/asl.css')}} />
@@ -19,7 +19,7 @@
 <body id="body">
     <nav class='ham_nav' id="my_nav">
         <div class="nav_link_menu" id="nav_link_menu">
-           <a class="ham_home_link" id="nav-hero" href="#" aria-label="home Sound and Silence"><image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image></a>
+           <a class="ham_home_link" id="nav-hero" href="/" aria-label="home Sound and Silence"><image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image></a>
            <div class="flex-center">
            <a  class="ham_link" href="/color">Color and Contrast</a>
            <a  class="ham_link" href="/asl">American Sign Language</a>
@@ -29,7 +29,7 @@
         <i class="fas fa-bars fa-2x" id="hamburger" value="ON" aria-label="this icon when clicked will hide or show the menu link items"></i>
     </nav>
 <main id="main">
-    <section id="asl"></section>
+    <section id="asl">
     <header id="page-title">American Sign Language
         <div>
             <image class="letter" src={{url_for('static', filename='images/asl/Aa.jpg')}} alt="A sign language A"/>
