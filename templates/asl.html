@@ -7,6 +7,7 @@
     <meta name="description" content="Created for Chingu Voyage 22, a site to discover the possibilities of accessibility.">
     <!-- JavaScript -->
     <script src={{ url_for('static', filename='js/ham_nav.js')}}></script>
+    <script src={{ url_for('static', filename='js/asl.js')}}></script>
     <!-- Style sheets -->
     <link rel="stylesheet" href={{ url_for('static', filename='css/ham_nav.css')}} />
     <link rel="stylesheet" href={{ url_for('static', filename='css/asl.css')}} />
@@ -37,6 +38,13 @@
             <image class="letter" src={{url_for('static', filename='images/asl/Ll.jpg')}} alt="A sign language L"/>
         </div>
     </header>
+    <section id="slideshow">
+        <div class="slideshow-header"
+            <h2>How Many Signs Do You Know?</h2>
+            <button class="slideshow-button" onclick="createSlideshow()">Click to See Signs</button>
+            <div id="slideshow-items"></div>
+        </div>
+    </section>
 </section>
 
 </main>
