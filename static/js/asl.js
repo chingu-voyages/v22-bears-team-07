@@ -4,6 +4,7 @@ createLetterArray = () => {
     for (i=0; i < 26; i++) {
         letters[i] = alphabet.charAt(i).toUpperCase() + alphabet.charAt(i)
     }
+    letters = randomizeArray(letters)
     return letters
 }
 
@@ -29,4 +30,19 @@ createSlideshow = () => {
     for ( const letter of letters) {
         createSlide(letter)
     }
+}
+
+randomizeArray = (array) => {
+    function getRandomInt(maxInt) {
+        return Math.floor(Math.random() * Math.floor(maxInt))
+    }
+    let j = 0
+    let test = ''
+    for (let i=array.length - 1; i > 0; i--){
+        j = getRandomInt(i)
+        test = array[j]
+        array[j] = array[i]
+        array[i] = test
+    }
+    return array
 }
