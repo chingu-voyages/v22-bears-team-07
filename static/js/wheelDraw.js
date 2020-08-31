@@ -38,6 +38,10 @@ const QUADRANTS = {
     'purple': [['M', 'L', 'M'], ['H', 'L', 'H']],
 }
 
+let OUTTER = []
+let CORE = []
+let INNER = []
+
 const GREYS = {
     'white': ['H', 'H', 'H'],
     'silver': ['M', 'M', 'M'],
@@ -287,7 +291,7 @@ function drawChart() {
     var myPieChart = new Piechart(options)
     myPieChart.draw()
     Shade(ctx, 150)
-    draw_points()
+    set_points()
 }
 
 function listpoints(r) {
@@ -295,6 +299,7 @@ function listpoints(r) {
     let x = Math.round(canvas.width / 2)
     let y = Math.round(canvas.height / 2)
     let diff = 30
+
 
     var angle = 15 * (Math.PI / 180)
     var angle2 = 45 * (Math.PI / 180)
@@ -361,23 +366,25 @@ function listpoints(r) {
     let r10 = [x + cos10, y - sin10]
     let r11 = [x + cos11, y - sin11]
     let r12 = [x + cos12, y - sin12]
+
     return [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12]
 
 }
 
 
-function draw_points() {
+function set_points() {
     //Thanks Regina!
 
     let outter = listpoints(130)
     let core = listpoints(90)
     let inner = listpoints(55)
-    /* MDN:
-     * ctx.moveTo(95, 65);
-ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Right eye
-ctx.stroke();
-void ctx.arc(x, y, radius, startAngle, endAngle [, anticlockwise]);
-     */
+    OUTTER = outter
+    CORE = core
+    INNER = inner
+    console.log(`OUTTER ring item[0]: ${outter[0]}`)
+    console.log(`CORE ring: ${CORE}`)
+    console.log(`INNER ring: ${INNER}`)
+  /* drawing every point in each ring:
     for (i in outter) {
         r1 = outter[i][0]
         r2 = outter[i][1]
@@ -401,6 +408,7 @@ void ctx.arc(x, y, radius, startAngle, endAngle [, anticlockwise]);
         ctx.arc(rx, ry, 5, 0, Math.PI * 2, true)
         ctx.stroke()
     };
+    */
 
 
 }

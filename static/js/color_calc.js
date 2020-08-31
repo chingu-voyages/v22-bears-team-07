@@ -48,7 +48,7 @@ function set_RGB1(rgb1){
     RGB1 = rgb1
     let list1 = return_RGB1()
     let rgbstring1 = 'RGB(' + list1[0] + ' , ' + list1[1] + ' , ' + list1[2] + ')'
-  
+
     RGB1_DIV.innerHTML = rgbstring1
 
 }
@@ -183,6 +183,8 @@ function testlog(){
   //test_wheel()
   console.log("----   END LOG ----")
 }
+
+
 
 window.addEventListener('load', (event)=> {
   set_DOM_COLORCALC();

@@ -36,104 +36,23 @@ y=height
 */
 
 class WheelGrid {
-  constructor(diameter, radius){
-    this.diameter = diameter
-    this.radius = radius
-    this.ring = 'inner'
-    this.quadrant = 'black'
-
-  }
-  set_ring(rgb) {
-    let r = rgb[0]
-    let g = rgb[1]
-    let b = rgb[2]
-    let total = r + g + b
-    let primary = false;
-    let outer = false;
-    let inner = false;
-    let max = Math.max(r, g, b)
-    let min = Math.min(r, g, b)
-    let diff = Math.abs(max - min)
-
-    // NOTE**
-       // THESE are just approximations
-       // actual math and a true radiant/gradient circle mapping is done
-       // as seen in this link: https://axonflux.com/handy-rgb-to-hsl-and-rgb-to-hsv-color-model-c
-    // MONOCHROMATIC TREE
-    if(diff < 75){
-      // this is black, grey, or white. monochromatic
-      if (max >= 210){
-          // this is a light color:
-          this.ring = 'outter'
-        }
-      else if (max < 210 && max > 75) {
-        this.ring = 'grey'
-      }
-      else {
-        this.ring = 'center'
-
-      }
-
-        }
-    // QUADRANT BY DOMINANT
-    // RED = R greater than G or B by 50 points
-    // ORANGE = R > 200, G < 123, B < 15
-      // ORANGE happens when R and G are high, and blue is low
-    // YELLOW = R and G > 123   B only effects lightness
-    // GREEN = G greater than B or R by 50 points
-      // GREEN fades to yellow or Blue deteremined by RED amount
-    // AQUA = G and B within 50 both > 200,  R < 50
-    // BLUE WHEN ALL above is not true, and B > G by 50 points.
-    //BLUE
-    if (b > 200){
-      if(r > 125 && g <= 75){
-        this.quadrant = 'purple'
-      }
-      else if(g > 200 && red <= 125) {
-        this.quadrant = 'aqua'
-      }
-      else {
-        this.quadrant = 'blue'
-      }
-    }
-
-    //RED
-    if (r > 200) {
-      if(g > 200 && b <= 125){
-        this.quadrant = 'orange'
-      }
-      else if(g <= 140 && b <= 140){
-        this.quadrant = 'yellow'
-      }
-      else if(b > 125){
-        this.quadrant = 'purple'
-      }
-      else {
-        this.quadrant = "red"
-      }
-    }
-    //GREEN
-    if (g > 200){
-      if(r <= 164 && b <= 164){
-        this.quadrant = 'green'
-      }
-      else if (r >= 190 && b <= 100){
-        this.quadrant = 'orange'
-
-      }
-      else {
-        this.quadrant = 'green'
-      }
-    }
-  };
-
-
-  get_placement() {
-    console.log(this.quadrant, this.ring)
-    return [this.quadrant, this.ring]
+  constructor () {
+  this.SLICE = {
+  'fuscia': ['H', 'L', 'M'],
+  'red': [['H', 'L', 'L'], ['M', 'L', 'L'], ['H', 'M', 'M']],
+  'brick': ['M', 'M', 'L'],
+  'orange': ['H', 'M', 'L'],
+  'tang': ['M', 'M', 'L'],
+  'yellow': [['H', 'H', 'L'], ['H', 'H', 'M']],
+  'lime': ['M', 'H', 'L'],
+  'green': [['L', 'H', 'L'], ['M', 'H', 'M'], ['L', 'H', 'L']],
+  'aqua': [['L', 'M', 'M'], ['L', 'H', 'H']],
+  'blue': [['L', 'L', 'H'], ['M', 'M', 'H'], ['L', 'M', 'H']],
+  'pursian': ['M', 'L', 'H'],
+  'purple': [['M', 'L', 'M'], ['H', 'L', 'H']],
   }
 }
-
+}
 
 function set_WHEEL() {
     console.log('setting wheel')
@@ -268,10 +187,12 @@ function getCOLORs(){
 }
 
 function update() {
+  /*
     drawArm1()
     drawArm2()
     drawBall1()
     drawBall2()
+    */
 }
 
 window.addEventListener('load', (event) => {
