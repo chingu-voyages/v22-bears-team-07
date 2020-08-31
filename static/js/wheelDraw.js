@@ -15,11 +15,16 @@
 * will be established in color_calc.
 */
 
-let COLOR = {
+let SELECTION1 = {
             'r': 0,
             'g': 0,
             'b': 0,
         }
+let SELECTION2 = {
+  'r': 0,
+  'g': 0,
+  'b': 0,
+}
 
 let FAMILY = 'None'
 
@@ -31,7 +36,7 @@ const QUADRANTS = {
     'tang': ['M', 'M', 'L'],
     'yellow': [['H', 'H', 'L'], ['H', 'H', 'M']],
     'lime': ['M', 'H', 'L'],
-    'green': [['L', 'H', 'L'], ['M', 'H', 'M'], ['L', 'H', 'L']],
+    'green': [['L', 'H', 'L'], ['M', 'H', 'M'], ['L', 'H', 'L'], ['L', 'H', 'M']],
     'aqua': [['L', 'M', 'M'], ['L', 'H', 'H']],
     'blue': [['L', 'L', 'H'], ['M', 'M', 'H'], ['L', 'M', 'H']],
     'pursian': ['M', 'L', 'H'],
@@ -49,28 +54,118 @@ const GREYS = {
     'black': ['L', 'L', 'L'],
 }
 
-function colorPlace() {
-    let r = COLOR.r
-    let g = COLOR.g
-    let b = COLOR.b
-    let colorstring = 'rgb(' + r + ',' + g + ',' + b + ')'
-    let display = document.getElementById('main')
-    display.style.background = colorstring
-    createHML()
+
+class ColorGrid {
+  constructor () {
+  this.QUADRANTS = {
+      'fuscia': ['H', 'L', 'M'],
+      'red': [['H', 'L', 'L'], ['M', 'L', 'L'], ['H', 'M', 'M']],
+      'brick': ['M', 'M', 'L'],
+      'orange': ['H', 'M', 'L'],
+      'tang': ['M', 'M', 'L'],
+      'yellow': [['H', 'H', 'L'], ['H', 'H', 'M']],
+      'lime': ['M', 'H', 'L'],
+      'green': [['L', 'H', 'L'], ['M', 'H', 'M'], ['L', 'H', 'L']],
+      'aqua': [['L', 'M', 'M'], ['L', 'H', 'H']],
+      'blue': [['L', 'L', 'H'], ['M', 'M', 'H'], ['L', 'M', 'H']],
+      'pursian': ['M', 'L', 'H'],
+      'purple': [['M', 'L', 'M'], ['H', 'L', 'H']],
   }
 
-  function setRGB() {
-    let r = document.getElementById('RED').value
-    let g = document.getElementById('GREEN').value
-    let b = document.getElementById('BLUE').value
-    COLOR.r = r
-    COLOR.g = g
-    COLOR.b = b
-    colorPlace()
+  this.OUTTER = []
+  this.CORE = []
+  this.INNER = []
+
+  this.GRAYS = {
+      'white': ['H', 'H', 'H'],
+      'gray': ['M', 'M', 'M'],
+      'drkgrey': ['LM', 'LM', 'LM'],
+      'black': ['L', 'L', 'L'],
+  }
+}
+
+  get_OUTTER() {
+    return this.OUTTER
+  }
+  get_CORE(){
+    return this.CORE
+  }
+  get_INNER(){
+    return this.INNER
+  }
+  get_QUAD() {
+    return this.QUADRANTS
+  }
+  get_GRAY() {
+    return this.GRAYS
+  }
 
 }
 
 
+  function testrgb() {
+    let monocolors = ['white', 'silver', 'grey', 'black']
+    let rgb_one = document.getElementById('rgb_value1').innerHTML
+    let rgb_two = document.getElementById('rgb_value2').innerHTML
+    console.log(`color 1 : ${rgb_one}`)
+    console.log(`color 2 : ${rgb_two}`)
+    let rgb1_list = getColor(rgb_one)
+    let rgb2_list = getColor(rgb_two)
+    console.log(`rgb list one: ${rgb1_list}`)
+    console.log(`rgb list two: ${rgb2_list}`)
+    let hslOne = createHSL(rgb1_list)
+    let hslTwo = createHSL(rgb2_list)
+    console.log(hslOne, hslTwo)
+    let test1 = getfamily(hslOne)
+    let test2 = getfamily(hslTwo)
+    if(monocolors.includes(test1)){
+      test1 = checkMono(rgb1_list, test1)
+    }
+    if(monocolors.includes(test2)){
+      test2 = checkMono(rgb2_list, test2)
+    }
+    console.log('test1', test1)
+    console.log('test2', test2)
+
+
+}
+
+function checkMono(rgb, family){
+  let min = Math.min(...rgb)
+  let max = Math.max(...rgb)
+  let diff = max - min
+  let temp = family
+  // if the monochromes are within 15, the color can stay
+  if (diff < 9){
+    return family
+  }
+  else{
+    var index = 0
+    for(i in rgb){
+       let item = rgb[i]
+       console.log(`item = ${item} max = ${max}`)
+       if(item === max){
+         index = i
+         break;
+       }
+    };
+    console.log(index)
+    switch (index){
+      case 0:
+      family = 'red'
+      break;
+      case 1:
+      family = 'green'
+      break;
+      case 2:
+      family = 'blue'
+      break;
+    }
+    return family
+  }
+
+
+}
 function getfamily(hsl) {
     //check monochromes
     let family = 'None'
@@ -108,57 +203,52 @@ function getfamily(hsl) {
         //console.log(hsl, current)
         };
     }
-    //FAMILY = family
-    let ppfamily = "--~~--~~--~~--~~--\n" + family + "\n--~~--~~--~~--~~--"
-    let div = document.getElementById("color_family")
-    div.innerHTML = ppfamily
-    console.log(ppfamily)
+    return family
 
 
 }
 
+function createHSL(rgb) {
+  let r1 = rgb[0]
+  let g1 = rgb[1]
+  let b1 = rgb[2]
+  let HSL = []
+  if (r1 > 170) {
+      HSL.push('H')
 
+  }
+  else if (r1 > 85) {
+      HSL.push('M')
 
+  }
+  else {
+      HSL.push('L')
+  }
+  if (g1 > 170) {
+      HSL.push('H')
+  }
+  else if (g1 > 85) {
+      HSL.push('M')
 
-function createHML() {
-    let r1 = COLOR.r
-    let g1 = COLOR.g
-    let b1 = COLOR.b
-    let HSL = []
-    if (r1 > 170) {
-        HSL.push('H')
+  }
+  else {
+      HSL.push('L')
+  }
 
-    }
-    else if (r1 > 85) {
-        HSL.push('M')
+  if (b1 > 170) {
+      HSL.push('H')
+  }
+  else if (b1 > 85) {
+      HSL.push('M')
+  }
+  else {
+      HSL.push('L')
+  }
+  //console.log(HSL)
+  return HSL
 
-    }
-    else {
-        HSL.push('L')
-    }
-    if (g1 > 170) {
-        HSL.push('H')
-    }
-    else if (g1 > 85) {
-        HSL.push('M')
-
-    }
-    else {
-        HSL.push('L')
-    }
-
-    if (b1 > 170) {
-        HSL.push('H')
-    }
-    else if (b1 > 85) {
-        HSL.push('M')
-    }
-    else {
-        HSL.push('L')
-    }
-    console.log(HSL)
-    getfamily(HSL)
 }
+
 
 
 
@@ -378,12 +468,13 @@ function set_points() {
     let outter = listpoints(130)
     let core = listpoints(90)
     let inner = listpoints(55)
-    OUTTER = outter
-    CORE = core
-    INNER = inner
-    console.log(`OUTTER ring item[0]: ${outter[0]}`)
-    console.log(`CORE ring: ${CORE}`)
-    console.log(`INNER ring: ${INNER}`)
+    let colorgrid = new ColorGrid()
+    colorgrid.OUTTER = outter
+    colorgrid.CORE = core
+    colorgrid.INNER = inner
+    //console.log(colorgrid.get_OUTTER())
+    //console.log(colorgrid.core)
+    //console.log(colorgrid.inner)
   /* drawing every point in each ring:
     for (i in outter) {
         r1 = outter[i][0]
@@ -413,9 +504,12 @@ function set_points() {
 
 }
 
+
 function listen_chart() {
     let chartbtn = document.getElementById('chartbtn')
     chartbtn.addEventListener('click', drawChart)
+    let checkbtn = document.getElementById('check_wheel')
+    checkbtn.addEventListener('click', testrgb)
 }
 
 window.addEventListener('load', (event) => {

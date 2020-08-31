@@ -35,24 +35,6 @@ y=height
 
 */
 
-class WheelGrid {
-  constructor () {
-  this.SLICE = {
-  'fuscia': ['H', 'L', 'M'],
-  'red': [['H', 'L', 'L'], ['M', 'L', 'L'], ['H', 'M', 'M']],
-  'brick': ['M', 'M', 'L'],
-  'orange': ['H', 'M', 'L'],
-  'tang': ['M', 'M', 'L'],
-  'yellow': [['H', 'H', 'L'], ['H', 'H', 'M']],
-  'lime': ['M', 'H', 'L'],
-  'green': [['L', 'H', 'L'], ['M', 'H', 'M'], ['L', 'H', 'L']],
-  'aqua': [['L', 'M', 'M'], ['L', 'H', 'H']],
-  'blue': [['L', 'L', 'H'], ['M', 'M', 'H'], ['L', 'M', 'H']],
-  'pursian': ['M', 'L', 'H'],
-  'purple': [['M', 'L', 'M'], ['H', 'L', 'H']],
-  }
-}
-}
 
 function set_WHEEL() {
     console.log('setting wheel')

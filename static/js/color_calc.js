@@ -47,7 +47,7 @@ function set_DOM_COLORCALC(){
 function set_RGB1(rgb1){
     RGB1 = rgb1
     let list1 = return_RGB1()
-    let rgbstring1 = 'RGB(' + list1[0] + ' , ' + list1[1] + ' , ' + list1[2] + ')'
+    let rgbstring1 = 'rgb(' + list1[0] + ' , ' + list1[1] + ' , ' + list1[2] + ')'
 
     RGB1_DIV.innerHTML = rgbstring1
 
@@ -56,7 +56,7 @@ function set_RGB1(rgb1){
 function set_RGB2(rgb2){
     RGB2 = rgb2
     let list2 = return_RGB2()
-    let rgbstring2 = 'RGB(' + list2[0] + ' , ' + list2[1] + ' , ' + list2[2] + ')'
+    let rgbstring2 = 'rgb(' + list2[0] + ' , ' + list2[1] + ' , ' + list2[2] + ')'
 
     RGB2_DIV.innerHTML = rgbstring2
 }
