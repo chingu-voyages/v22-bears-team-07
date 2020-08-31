@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body {
     margin: 0;
     padding: 0;
@@ -37,6 +40,43 @@ img {
 }
 .letter {
     width: 2em;
+}
+#slideshow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.slideshow-button {
+  color: #997555;
+  font-size: 1em;
+}
+.slideshow-header {
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #997555;
+  text-shadow: 1px 1px black, -1px 1px darkgrey;
+  margin-bottom: .5em;
+}
+#slideshow-items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.slide {
+  border: 1px solid black;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: .5em;
+}
+.slide-image {
+  width: 6rem;
+}
+.slide-text {
+  text-align: center;
 }
 /* --------  MOBILE -----------*/
 
