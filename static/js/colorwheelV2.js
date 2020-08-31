@@ -231,11 +231,13 @@ function drawBall1() {
 function drawBall2() {
     ux = BALL2.xpos - 20
     uy = BALL2.ypos
-    console.log(ux, uy)
-    var radgrad2 = CTX.createRadialGradient(ux, uy, 20, 112, 120, 50);
-    radgrad2.addColorStop(0, 'rgba(200, 200, 200, 0.7)');
-    radgrad2.addColorStop(0.5, 'rgba(0, 0, 0, 1)');
-    radgrad2.addColorStop(1, 'rgba(200, 200, 200, 0.7)');
+    //console.log(ux, uy)
+
+    var radgrad2 = CTX.createRadialGradient(ux, uy, 6, ux - 6, uy, 3);
+    radgrad2.addColorStop(0, 'rgb(110, 110, 110)');
+
+    radgrad2.addColorStop(1, 'rgb(0, 0, 0)');
+
 
     CTX.beginPath()
 
@@ -246,7 +248,7 @@ function drawBall2() {
      * ctx.arc(75, 75, 50, 0, Math.PI * 2, true);
      * reference link: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors
      */
-    CTX.arc(ux + 10, uy, 10, 0, Math.PI * 2, true)
+    CTX.arc(ux + 10, uy, 5, 0, Math.PI * 2, true)
     CTX.fillStyle = radgrad2
     CTX.fill()
 }

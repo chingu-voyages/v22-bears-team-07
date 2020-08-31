@@ -16,7 +16,13 @@
     background: black;
     text-align: center;
 }
-
+#hex-bar {
+  padding: 0;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 #rgb_bar {
     padding: 0;
     margin: 2px;
@@ -234,6 +240,10 @@ h2 {
   text-align: center;
   font-size: 1em;
 }
+#wheel-title {
+  font-weight: 100;
+  font-size: 1.2em;
+}
 h3 {
     margin: 0;
     padding: 0;
@@ -266,7 +276,7 @@ footer {
 }
 #typeface {
   width: 90vw;
-  margin-left: 5vw;
+
 
 }
 #type_explained{
@@ -320,6 +330,112 @@ footer {
 
 }
 
+
+/* -------- FOR TAB paragraphs --------*/
+.center-box {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+}
+
+.tab-row {
+    display: flex;
+    width: 90vw;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+    .tab-row button {
+        width: 24%;
+        padding: 1ch;
+        border: none;
+        border-top-left-radius: 20%;
+        border-top-right-radius: 20%;
+        font-family: inherit;
+    }
+
+#Contrast {
+    display: none;
+    background: #aebeb0;
+}
+#Compliment {
+    display: none;
+    background: #abb59b;
+}
+#Ratio {
+    display: none;
+    background: #a8ac80;
+}
+#Example {
+    display: flex;
+    background: #a39d5d;
+}
+
+#tabContrast:focus {
+    background: black;
+    color: white;
+
+}
+#tabCompliment:focus {
+    background: black;
+    color: white;
+
+}
+#tabRatio:focus {
+    background: black;
+    color: white;
+
+}
+#tabExample:focus {
+    background: black;
+    color: white;
+
+}
+
+#tabContrast {
+    background: #aebeb0;
+}
+#tabCompliment {
+    background: #abb59b;
+}
+#tabRatio {
+    background: #a8ac80;
+}
+#tabExample {
+    background: #a39d5d;
+}
+.tabcontent {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 90vw;
+    font-size: 1em;
+    padding: 2ch;
+}
+.tab {
+    border: none;
+
+}
+.tab:focus {
+    transform: scale(1.1);
+    box-shadow: 1px -1px -3px black;
+    border: none;
+    outline: none;
+}
+
+.tabTitle {
+    height: 3ch;
+    width: 100%;
+    align-content: center;
+    text-align: center;
+    font-size: 1em;
+    background-color: white;
+}
+
 /* MOBILE */
 @media all and (max-width: 799px) and (min-width: 220px) {
   #title {
@@ -330,5 +446,16 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+  .tab-row{
+    justify-content: space-around;
+    text-align: center;
+    height: 4ch;
+    width: 100vw;
+  }
+  .tab {
+    font-size: 1em;
+    font-weight: 100;
+    text-shadow: 1px 1px 2px white;
   }
 }

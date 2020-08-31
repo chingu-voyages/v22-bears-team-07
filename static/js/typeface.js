@@ -120,4 +120,5 @@ function font_listener() {
 window.addEventListener('load', (event) => {
   font_listener()
   listen_blur()
+  //testing()
 })
