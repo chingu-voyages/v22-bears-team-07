@@ -21,6 +21,7 @@
     <!-- javascript -->
     <script type="text/javascript" src={{ url_for('static', filename='js/colorwheelV2.js')}}></script>
       <script type="text/javascript" src={{ url_for('static', filename='js/ham_nav.js')}}></script>
+      <script type="text/javascript" src={{ url_for('static', filename='js/wheelDraw.js')}}></script>
       <script type="text/javascript" src={{ url_for('static', filename='js/color_calc.js')}}></script>
       <script type="text/javascript" src={{ url_for('static', filename='js/tabs.js')}}></script>
       <script type="text/javascript" src={{ url_for('static', filename='js/typeface.js')}}></script>
@@ -51,17 +52,19 @@
         <!--- COLOR WHEEL VALUES -->
         <div id="rgb_bar">
             <h2 id="rgb_value1">
-                RGB(0, 0, 0)
+                rgb(0, 0, 0)
             </h2>
             <h2 id="rgb_value2">
-                RGB(0, 0, 0)
+                rgb(0, 0, 0)
             </h2>
         </div>
         <hr />
         <div id="hex-bar">
+          <label for="hex_display1">HEX #1</label>
           <h2 id="hex_display1">
             #00000
           </h2>
+          <label for="hex_display2">HEX #2</label>
           <h2 id="hex_display2">
             #00000
           </h2>
@@ -94,15 +97,16 @@
 
         <hr />
         <!-- COLOR WHEEL INTERACTION -->
-        <div class="screen" style="background-image: url('static/images/color_wheel.png')">
-             <canvas id="mycanvas">
+        <div class="screen">
+             <button id="chartbtn">DRAW chart</button>
+             <canvas id="mycanvas" width="300px" height="300px">
              </canvas>
-        </div>
+         </div>
 
 
 
             <hr />
-            <div class="flex-row">
+            <div class="flex-row" style="display:hidden;">
                       <label for="RED">RED:</label>
                       <input id="RED" type="number" max="255" value="0" />
                       <label for="GREEN">GREEN:</label>
@@ -112,7 +116,7 @@
                       <button id="submitrgb" onclick="setRGB()">submit</button>
                   </div>
 
-                  <div class="flex-column">
+                  <div class="flex-column" style="display:hidden;">
                       <h2 id="color_family">None</h2>
                       <!-- <h2 id="shade">None</h2>-->
                   </div>
