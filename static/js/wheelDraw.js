@@ -17,16 +17,6 @@
 
 
 let colorgrid;
-let SELECTION1 = {
-            'r': 0,
-            'g': 0,
-            'b': 0,
-        }
-let SELECTION2 = {
-  'r': 0,
-  'g': 0,
-  'b': 0,
-}
 
 let FAMILY = 'None'
 
@@ -160,13 +150,13 @@ function testrgb() {
 //  console.log('test1', test1)
   //console.log('test2', test2)
   if(monocolors.includes(test1)){
-    var coords1 = get_mono(test1)
+    var coords1 = get_monoXY(test1)
   }
   else{
     var coords1 = get_slice(test1)
   }
   if(monocolors.includes(test2)){
-    var coords2 = get_mono(test2)
+    var coords2 = get_monoXY(test2)
   }
   else{
     var coords2 = get_slice(test2)
@@ -179,7 +169,7 @@ function testrgb() {
   //test_quad()
 }
 
-function get_mono(name){
+function get_monoXY(name){
   let center = [150, 150]
   let grey = [20, 20]
   let white = [10, 10]
@@ -223,30 +213,30 @@ function draw_sliceCoords(arr){
   let type = typeof first
   console.log(`type = ${type}`)
   if (type !== 'number'){
-  for(i in arr){
+    for(i in arr){
 
-    var r1 = arr[i][0]
-    var r2 = arr[i][1]
+      var r1 = arr[i][0]
+      var r2 = arr[i][1]
+      //console.log(`drawing at: ${r1}, ${r2}`)
+      CTX.beginPath()
+      CTX.arc(r1, r2, 10, 0, Math.PI * 2, true)
+      CTX.stroke()
+      CTX.fill()
+      //CTX.stroke()
+
+    };
+  }
+  else{
+    console.log("drawing monochrome")
+    var r1 = arr[0]
+    var r2 = arr[1]
     //console.log(`drawing at: ${r1}, ${r2}`)
     CTX.beginPath()
-    CTX.arc(r1, r2, 10, 0, Math.PI * 2, true)
+    CTX.arc(r1, r2, 15, 0, Math.PI * 2, true)
     CTX.stroke()
     CTX.fill()
     //CTX.stroke()
-
-  };
-}
-else{
-  console.log("drawing monochrome")
-  var r1 = arr[0]
-  var r2 = arr[1]
-  //console.log(`drawing at: ${r1}, ${r2}`)
-  CTX.beginPath()
-  CTX.arc(r1, r2, 15, 0, Math.PI * 2, true)
-  CTX.stroke()
-  CTX.fill()
-  //CTX.stroke()
-}
+    }
 
 }
 
