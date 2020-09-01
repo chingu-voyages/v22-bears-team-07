@@ -181,6 +181,9 @@ p {
 section {
   background: rgba(255, 255, 255, 0.7);
 }
+.aboutP{
+  background: white;
+}
 select {
   border: 2px solid orange;
   padding: 1ch;

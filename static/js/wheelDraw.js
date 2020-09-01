@@ -141,33 +141,77 @@ function testrgb() {
 
   let test1 = getfamily(hslOne)
   let test2 = getfamily(hslTwo)
+  let mono1 = false
+  let mono2 = false
   if(monocolors.includes(test1)){
     test1 = checkMono(rgb1_list, test1)
   }
   if(monocolors.includes(test2)){
     test2 = checkMono(rgb2_list, test2)
   }
-//  console.log('test1', test1)
-  //console.log('test2', test2)
-  if(monocolors.includes(test1)){
-    var coords1 = get_monoXY(test1)
+
+  var coords1 = get_slice(test1)
+  var coords2 = get_slice(test2)
+
+  spacer = "************\n"
+  console.log(spacer, test1, coords1)
+  console.log(spacer, test2, coords2)
+
+  if(test1 == 'silver' || test1 == 'white' || test1 =='black'){
+    draw_ring(test1)
   }
   else{
-    var coords1 = get_slice(test1)
+    draw_sliceCoords(coords1)
   }
-  if(monocolors.includes(test2)){
-    var coords2 = get_monoXY(test2)
+
+  if(test2 == 'silver' || test2 == 'white' || test2 == 'black'){
+    draw_ring(test2)
   }
   else{
-    var coords2 = get_slice(test2)
+    draw_sliceCoords(coords2)
   }
-  //spacer = "************\n"
-  //console.log(spacer, test1, coords1)
-  //console.log(spacer, test2, coords2)
-  draw_sliceCoords(coords1)
-  draw_sliceCoords(coords2)
-  //test_quad()
+  
+
 }
+
+function draw_ring(name){
+  CANVAS = document.getElementById('mycanvas');
+  CTX = CANVAS.getContext("2d")
+  CTX.lineWidth = 10;
+  let midX = Math.round(CANVAS.width / 2)
+  let midY = Math.round(CANVAS.height / 2)
+  let midR = 75
+  let outterR = 150
+  console.log(`name in draw_ring() = ${name}`)
+  if(name == 'white'){
+    CTX.strokeStyle = "black"
+    CTX.beginPath()
+    CTX.arc(midX, midY, outterR, 0, Math.PI * 2, true)
+    CTX.lineWidth = 3
+    CTX.arc(midX, midY, outterR - 5, 0, Math.PI * 2, true)
+    CTX.stroke()
+  }
+
+
+  if(name == 'black'){
+    CTX.strokeStyle = "white"
+    CTX.beginPath()
+    CTX.arc(midX, midY, 10, 0, Math.PI * 2, true)
+    CTX.lineWidth = 3
+    CTX.arc(midX, midY, 5, 0, Math.PI * 2, true)
+    CTX.stroke()
+  }
+
+
+  if(name == 'silver'){
+
+    CTX.strokeStyle = 'silver'
+    CTX.beginPath()
+    CTX.arc(midX, midY, midR, 0, Math.PI * 2, true)
+    CTX.stroke()
+  }
+}
+
 
 function get_monoXY(name){
   let center = [150, 150]
