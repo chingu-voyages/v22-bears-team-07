@@ -15,6 +15,8 @@
 * will be established in color_calc.
 */
 
+
+let colorgrid;
 let SELECTION1 = {
             'r': 0,
             'g': 0,
@@ -36,10 +38,10 @@ const QUADRANTS = {
     'tang': ['M', 'M', 'L'],
     'yellow': [['H', 'H', 'L'], ['H', 'H', 'M']],
     'lime': ['M', 'H', 'L'],
-    'green': [['L', 'H', 'L'], ['M', 'H', 'M'], ['L', 'H', 'L'], ['L', 'H', 'M']],
+    'green': [['L', 'H', 'L'], ['M', 'H', 'M'], ['L', 'H', 'L'], ['L', 'H', 'M'], ['L', 'M', 'L']],
     'aqua': [['L', 'M', 'M'], ['L', 'H', 'H']],
     'blue': [['L', 'L', 'H'], ['M', 'M', 'H'], ['L', 'M', 'H']],
-    'pursian': ['M', 'L', 'H'],
+    'pursian': [['M', 'L', 'H'], ['L', 'L', 'M']],
     'purple': [['M', 'L', 'M'], ['H', 'L', 'H']],
 }
 
@@ -50,7 +52,6 @@ let INNER = []
 const GREYS = {
     'white': ['H', 'H', 'H'],
     'silver': ['M', 'M', 'M'],
-    'grey': ['LM', 'LM', 'LM'],
     'black': ['L', 'L', 'L'],
 }
 
@@ -58,18 +59,18 @@ const GREYS = {
 class ColorGrid {
   constructor () {
   this.QUADRANTS = {
-      'fuscia': ['H', 'L', 'M'],
-      'red': [['H', 'L', 'L'], ['M', 'L', 'L'], ['H', 'M', 'M']],
-      'brick': ['M', 'M', 'L'],
-      'orange': ['H', 'M', 'L'],
-      'tang': ['M', 'M', 'L'],
-      'yellow': [['H', 'H', 'L'], ['H', 'H', 'M']],
-      'lime': ['M', 'H', 'L'],
-      'green': [['L', 'H', 'L'], ['M', 'H', 'M'], ['L', 'H', 'L']],
-      'aqua': [['L', 'M', 'M'], ['L', 'H', 'H']],
-      'blue': [['L', 'L', 'H'], ['M', 'M', 'H'], ['L', 'M', 'H']],
-      'pursian': ['M', 'L', 'H'],
-      'purple': [['M', 'L', 'M'], ['H', 'L', 'H']],
+    'fuscia': ['H', 'L', 'M'],
+    'red': [['H', 'L', 'L'], ['M', 'L', 'L'], ['H', 'M', 'M']],
+    'brick': ['M', 'M', 'L'],
+    'orange': ['H', 'M', 'L'],
+    'tang': ['M', 'M', 'L'],
+    'yellow': [['H', 'H', 'L'], ['H', 'H', 'M']],
+    'lime': ['M', 'H', 'L'],
+    'green': [['L', 'H', 'L'], ['M', 'H', 'M'], ['L', 'H', 'L'], ['L', 'H', 'M'], ['L', 'M', 'L']],
+    'aqua': [['L', 'M', 'M'], ['L', 'H', 'H']],
+    'blue': [['L', 'L', 'H'], ['M', 'M', 'H'], ['L', 'M', 'H']],
+    'pursian': [['M', 'L', 'H'], ['L', 'L', 'M']],
+    'purple': [['M', 'L', 'M'], ['H', 'L', 'H']],
   }
 
   this.OUTTER = []
@@ -79,7 +80,6 @@ class ColorGrid {
   this.GRAYS = {
       'white': ['H', 'H', 'H'],
       'gray': ['M', 'M', 'M'],
-      'drkgrey': ['LM', 'LM', 'LM'],
       'black': ['L', 'L', 'L'],
   }
 }
@@ -102,31 +102,151 @@ class ColorGrid {
 
 }
 
+let COORDS = {
 
-  function testrgb() {
-    let monocolors = ['white', 'silver', 'grey', 'black']
-    let rgb_one = document.getElementById('rgb_value1').innerHTML
-    let rgb_two = document.getElementById('rgb_value2').innerHTML
-    console.log(`color 1 : ${rgb_one}`)
-    console.log(`color 2 : ${rgb_two}`)
-    let rgb1_list = getColor(rgb_one)
-    let rgb2_list = getColor(rgb_two)
-    console.log(`rgb list one: ${rgb1_list}`)
-    console.log(`rgb list two: ${rgb2_list}`)
-    let hslOne = createHSL(rgb1_list)
-    let hslTwo = createHSL(rgb2_list)
-    console.log(hslOne, hslTwo)
-    let test1 = getfamily(hslOne)
-    let test2 = getfamily(hslTwo)
-    if(monocolors.includes(test1)){
-      test1 = checkMono(rgb1_list, test1)
-    }
-    if(monocolors.includes(test2)){
-      test2 = checkMono(rgb2_list, test2)
-    }
-    console.log('test1', test1)
-    console.log('test2', test2)
+  'purple': [],
+  'pursian': [],
+  'blue': [],
+  'aqua': [],
+  'green': [],
+  'lime': [],
+  'yellow': [],
+  'tang': [],
+  'orange': [],
+  'brick': [],
+  'red': [],
+  'fuscia': [],
+}
 
+function build_coords(){
+  set_points()
+  var i = 0
+  for(item in COORDS){
+    let key = item
+    let value = COORDS[item]
+    let outter = colorgrid.OUTTER[i]
+    let core = colorgrid.CORE[i]
+    let inner = colorgrid.INNER[i]
+    //console.log(outter, core, inner)
+    value.push(outter, core, inner)
+
+    i++
+
+  }
+}
+
+
+function testrgb() {
+  clear_rect()
+  drawChart()
+  let monocolors = ['white', 'silver', 'black']
+  let rgb_one = document.getElementById('rgb_value1').innerHTML
+  let rgb_two = document.getElementById('rgb_value2').innerHTML
+
+  let rgb1_list = getColor(rgb_one)
+  let rgb2_list = getColor(rgb_two)
+
+  let hslOne = createHSL(rgb1_list)
+  let hslTwo = createHSL(rgb2_list)
+
+  let test1 = getfamily(hslOne)
+  let test2 = getfamily(hslTwo)
+  if(monocolors.includes(test1)){
+    test1 = checkMono(rgb1_list, test1)
+  }
+  if(monocolors.includes(test2)){
+    test2 = checkMono(rgb2_list, test2)
+  }
+//  console.log('test1', test1)
+  //console.log('test2', test2)
+  if(monocolors.includes(test1)){
+    var coords1 = get_mono(test1)
+  }
+  else{
+    var coords1 = get_slice(test1)
+  }
+  if(monocolors.includes(test2)){
+    var coords2 = get_mono(test2)
+  }
+  else{
+    var coords2 = get_slice(test2)
+  }
+  //spacer = "************\n"
+  //console.log(spacer, test1, coords1)
+  //console.log(spacer, test2, coords2)
+  draw_sliceCoords(coords1)
+  draw_sliceCoords(coords2)
+  //test_quad()
+}
+
+function get_mono(name){
+  let center = [150, 150]
+  let grey = [20, 20]
+  let white = [10, 10]
+  //console.log(`get_mono(${name})`)
+  switch(name){
+    case 'black':
+      return center
+
+    case 'silver':
+    //console.log(`returning: ${grey}`)
+      return grey
+
+    case'white':
+      return white
+  }
+  console.log('error',name)
+
+}
+
+function get_slice(family){
+    let locations = COORDS[family]
+
+    return locations
+
+}
+
+function draw_sliceCoords(arr){
+  CANVAS = document.getElementById('mycanvas');
+  CTX = CANVAS.getContext("2d")
+  CTX.strokeStyle = 'black'
+  CTX.fillStyle = 'grey'
+
+  /*
+  r1 = outter[i][0]
+  r2 = outter[i][1]
+  ctx.beginPath()
+  ctx.arc(r1, r2, 5, 0, Math.PI * 2, true)
+  ctx.stroke()
+  */
+  let first = arr[0]
+  let type = typeof first
+  console.log(`type = ${type}`)
+  if (type !== 'number'){
+  for(i in arr){
+
+    var r1 = arr[i][0]
+    var r2 = arr[i][1]
+    //console.log(`drawing at: ${r1}, ${r2}`)
+    CTX.beginPath()
+    CTX.arc(r1, r2, 10, 0, Math.PI * 2, true)
+    CTX.stroke()
+    CTX.fill()
+    //CTX.stroke()
+
+  };
+}
+else{
+  console.log("drawing monochrome")
+  var r1 = arr[0]
+  var r2 = arr[1]
+  //console.log(`drawing at: ${r1}, ${r2}`)
+  CTX.beginPath()
+  CTX.arc(r1, r2, 15, 0, Math.PI * 2, true)
+  CTX.stroke()
+  CTX.fill()
+  //CTX.stroke()
+}
 
 }
 
@@ -143,13 +263,13 @@ function checkMono(rgb, family){
     var index = 0
     for(i in rgb){
        let item = rgb[i]
-       console.log(`item = ${item} max = ${max}`)
+
        if(item === max){
          index = i
          break;
        }
     };
-    console.log(index)
+
     switch (index){
       case 0:
       family = 'red'
@@ -177,6 +297,7 @@ function getfamily(hsl) {
         }
 
     };
+    console.log(hsl)
     if (family == 'None') {
         for (let item in QUADRANTS) {
             current = QUADRANTS[item]
@@ -203,6 +324,7 @@ function getfamily(hsl) {
         //console.log(hsl, current)
         };
     }
+    console.log(family)
     return family
 
 
@@ -217,7 +339,7 @@ function createHSL(rgb) {
       HSL.push('H')
 
   }
-  else if (r1 > 85) {
+  else if (r1 > 105) {
       HSL.push('M')
 
   }
@@ -227,7 +349,7 @@ function createHSL(rgb) {
   if (g1 > 170) {
       HSL.push('H')
   }
-  else if (g1 > 85) {
+  else if (g1 > 105) {
       HSL.push('M')
 
   }
@@ -238,7 +360,7 @@ function createHSL(rgb) {
   if (b1 > 170) {
       HSL.push('H')
   }
-  else if (b1 > 85) {
+  else if (b1 > 105) {
       HSL.push('M')
   }
   else {
@@ -334,7 +456,7 @@ function drawChart() {
 
         canvas: mycanvas,
         data: colordata,
-        colors: ["rgb(204 , 20 , 198)", "rgb(255, 0, 0)", "rbg(205 , 75 , 24)", "rgb(255, 123, 0)", "rgb(250, 226, 48)", "rgb(255, 255, 0)","rgb(205, 255, 48)", "rgb(0, 255, 0)","rgb(48, 255, 200)", "rgb(45, 45, 255)","rgb(160, 48, 200)", "rgb(160, 45, 160)"]
+        colors: ["rgb(204 , 20 , 198)", "rgb(255, 0, 0)", "rbg(205 , 75 , 24)", "rgb(255, 123, 0)", "rgb(250, 226, 48)", "rgb(255, 255, 0)","rgb(205, 255, 48)", "rgb(0, 255, 0)","rgb(48, 255, 200)", "rgb(45, 45, 255)","rgb(78, 48, 185)", "rgb(160, 45, 160)"]
 
     }
     mycanvas = document.getElementById('mycanvas')
@@ -383,6 +505,57 @@ function drawChart() {
     Shade(ctx, 150)
     set_points()
 }
+
+
+function test_quad(){
+  let r = 75
+  let canvas = document.getElementById('mycanvas')
+  let CTX = canvas.getContext('2d')
+  let x = Math.round(canvas.width / 2)
+  let y = Math.round(canvas.height / 2)
+  let diff = 30
+
+  var angle7 = 195 * (Math.PI / 180)
+  var angle8 = 225 * (Math.PI / 180)
+  var angle9 = 255 * (Math.PI / 180)
+  cos7 = Math.round(r * Math.cos(angle7))
+  sin7 = Math.round(r * Math.sin(angle7))
+  //
+  cos8 = Math.round(r * Math.cos(angle8))
+  sin8 = Math.round(r * Math.sin(angle8))
+  //
+  cos9 = Math.round(r * Math.cos(angle9))
+  sin9 = Math.round(r * Math.sin(angle9))
+  let r7 = [x + cos7, y - sin7]
+  let r8 = [x + cos8, y - sin8]
+  let r9 = [x + cos9, y - sin9]
+
+  let r1 = r7[0]
+  let r1b = r7[1]
+  let r2 = r8[0]
+  let r2b = r8[1]
+  let r3 = r9[0]
+  let r3b = r9[1]
+
+
+
+
+
+  CTX.beginPath()
+  CTX.arc(r1, r1b, 5, 0, Math.PI * 2, true)
+  CTX.stroke()
+  CTX.beginPath()
+  CTX.arc(r2, r2b, 5, 0, Math.PI * 2, true)
+  CTX.stroke()
+  CTX.beginPath()
+  CTX.arc(r3, r3b, 5, 0, Math.PI * 2, true)
+  CTX.stroke()
+
+
+
+
+}
+
 
 function listpoints(r) {
     let canvas = document.getElementById('mycanvas')
@@ -463,55 +636,35 @@ function listpoints(r) {
 
 
 function set_points() {
-    //Thanks Regina!
+
 
     let outter = listpoints(130)
     let core = listpoints(90)
     let inner = listpoints(55)
-    let colorgrid = new ColorGrid()
+    colorgrid = new ColorGrid()
     colorgrid.OUTTER = outter
     colorgrid.CORE = core
     colorgrid.INNER = inner
-    //console.log(colorgrid.get_OUTTER())
-    //console.log(colorgrid.core)
-    //console.log(colorgrid.inner)
-  /* drawing every point in each ring:
-    for (i in outter) {
-        r1 = outter[i][0]
-        r2 = outter[i][1]
-        ctx.beginPath()
-        ctx.arc(r1, r2, 5, 0, Math.PI * 2, true)
-        ctx.stroke()
-    };
-
-    for (j in core) {
-        rr1 = core[j][0]
-        rr2 = core[j][1]
-        ctx.beginPath()
-        ctx.arc(rr1, rr2, 5, 0, Math.PI * 2, true)
-        ctx.stroke()
-    };
-
-    for (k in inner) {
-        rx = inner[k][0]
-        ry = inner[k][1]
-        ctx.beginPath()
-        ctx.arc(rx, ry, 5, 0, Math.PI * 2, true)
-        ctx.stroke()
-    };
-    */
 
 
 }
 
+function clear_rect(){
+  let canvas = document.getElementById('mycanvas')
+  let w = canvas.width
+  let h = canvas.height
+  let ctx = canvas.getContext('2d')
+  ctx.clearRect(0, 0, w, h)
 
+}
 function listen_chart() {
-    let chartbtn = document.getElementById('chartbtn')
-    chartbtn.addEventListener('click', drawChart)
+
     let checkbtn = document.getElementById('check_wheel')
     checkbtn.addEventListener('click', testrgb)
 }
 
 window.addEventListener('load', (event) => {
     listen_chart()
+    drawChart()
+    build_coords()
 });
