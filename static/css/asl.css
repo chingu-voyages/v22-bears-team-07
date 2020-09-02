@@ -1,0 +1,89 @@
+* {
+  box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: #f5f3f2;
+    color: black;
+    font-family: 'Red Rose', cursive;
+}
+
+header {
+  font-size: 2em;
+  border-bottom: 1px solid grey;
+  text-align: center;
+  color: #997555;
+  text-shadow: 1px 1px black, -1px 1px darkgrey;
+}
+
+/* footer can be pushed down or up using the margin-top value */
+footer {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 55vh;
+    width: 100vw;
+    bottom: 0px;
+    color: inherit;
+    border-top: 4px double #997555;
+    background: linear-gradient(45deg, transparent, #f0ecef, transparent);
+}
+/* CHANGES to img, may effect #hero_image */
+img {
+    width: 25vw;
+  }
+#hero_image {
+    height: 50px;
+    width: 60px;
+}
+.letter {
+    width: 2em;
+}
+#slideshow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.slideshow-button {
+  color: #997555;
+  font-size: 1em;
+}
+.slideshow-header {
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #997555;
+  text-shadow: 1px 1px black, -1px 1px darkgrey;
+  margin-bottom: .5em;
+}
+#slideshow-items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.slide {
+  border: 1px solid black;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: .5em;
+}
+.slide-image {
+  width: 6rem;
+}
+.slide-text {
+  text-align: center;
+}
+/* --------  MOBILE -----------*/
+
+@media all and (max-width: 799px) and (min-width: 220px) {
+  #nav-hero {
+    display: none;
+  }
+}
+/* light back: #ecf1f1*/
+/* dark back: #25262d*/
