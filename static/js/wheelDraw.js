@@ -523,6 +523,9 @@ function drawPieSlice(ctx, centerX, centerY, radius, startAngle, endAngle, color
 }
 
 function drawChart() {
+  mycanvas = document.getElementById('mycanvas')
+  //console.log(mycanvas.width, mycanvas.height)
+  ctx = mycanvas.getContext("2d")
     colordata = {
         "FUSCIA": 8,
             "RED": 9,
@@ -545,9 +548,7 @@ function drawChart() {
         colors: ["rgb(204 , 20 , 198)", "rgb(255, 0, 0)", "rbg(205 , 75 , 24)", "rgb(255, 123, 0)", "rgb(250, 226, 48)", "rgb(255, 255, 0)","rgb(205, 255, 48)", "rgb(0, 255, 0)","rgb(48, 255, 200)", "rgb(45, 45, 255)","rgb(78, 48, 185)", "rgb(160, 45, 160)"]
 
     }
-    mycanvas = document.getElementById('mycanvas')
-    //console.log(mycanvas.width, mycanvas.height)
-    ctx = mycanvas.getContext("2d")
+  
     var Piechart = function (options) {
         this.options = options;
         this.canvas = options.canvas;

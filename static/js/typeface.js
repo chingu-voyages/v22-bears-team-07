@@ -12,7 +12,7 @@
 
 
 //----- FONT CHANGE OBJECTS ----
-let MONO = {
+let MONOX = {
     'state': 'monochrome',
     'family': 'monospace',
     'weight': "400",
@@ -88,10 +88,10 @@ function font_change(){
             OBJ = FANCYFONT
             break;
        case 'mono':
-            OBJ = MONO;
+            OBJ = MONOX;
             break;
        default:
-            OBJ = MONO;
+            OBJ = MONOX;
 
     }
 
