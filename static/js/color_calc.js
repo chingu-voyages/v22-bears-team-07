@@ -24,6 +24,8 @@ let COLOR1;
 let COLOR2;
 let RGB1;
 let RGB2;
+let HEX1;
+let HEX2;
 let RGBobj1;
 let RGBobj2;
 let RGB1_DIV;
@@ -34,6 +36,8 @@ function set_DOM_COLORCALC(){
      COLOR2 = document.getElementById("hex_color2")
      RGB1 = COLOR1.value
      RGB2 = COLOR2.value
+     HEX1 = document.getElementById('hex_display1')
+     HEX2 = document.getElementById('hex_display2')
      RGBobj1 = convertHEX(RGB1)
      RGBobj2 = convertHEX(RGB2)
      RGB1_DIV = document.getElementById('rgb_value1')
@@ -43,7 +47,8 @@ function set_DOM_COLORCALC(){
 function set_RGB1(rgb1){
     RGB1 = rgb1
     let list1 = return_RGB1()
-    let rgbstring1 = 'RGB(' + list1[0] + ' , ' + list1[1] + ' , ' + list1[2] + ')'
+    let rgbstring1 = 'rgb(' + list1[0] + ' , ' + list1[1] + ' , ' + list1[2] + ')'
+
     RGB1_DIV.innerHTML = rgbstring1
 
 }
@@ -51,7 +56,8 @@ function set_RGB1(rgb1){
 function set_RGB2(rgb2){
     RGB2 = rgb2
     let list2 = return_RGB2()
-    let rgbstring2 = 'RGB(' + list2[0] + ' , ' + list2[1] + ' , ' + list2[2] + ')'
+    let rgbstring2 = 'rgb(' + list2[0] + ' , ' + list2[1] + ' , ' + list2[2] + ')'
+
     RGB2_DIV.innerHTML = rgbstring2
 }
 
@@ -66,20 +72,26 @@ function get_RGB2() {
 
 }
 
+
+
 function pickers_listen() {
 
        COLOR1.addEventListener('input', function (event) {
                let newrgb = get_RGB1()
-               set_RGB1(newrgb)
+               HEX1.innerHTML = newrgb
                let newobj = convertHEX(newrgb)
                RGBobj1 = newobj
+               set_RGB1(newrgb)
+
                //testlog()
        })
        COLOR2.addEventListener('input', function(event) {
               let newrgb2 = get_RGB2()
-              set_RGB2(newrgb2)
+              HEX2.innerHTML = newrgb2
               let newobj2 = convertHEX(newrgb2)
               RGBobj2 = newobj2
+              set_RGB2(newrgb2)
+
 
               //testlog()
        })
@@ -96,7 +108,7 @@ function return_RGB1() {
 
     rgblist = [R, G, B]
   }
-  console.log('rgb ONE list: ', rgblist)
+  //console.log('rgb ONE list: ', rgblist)
   return rgblist
 }
 
@@ -131,6 +143,27 @@ catch (error){
 
 }
 
+function test_wheel(){
+  let rgb1test = RGBobj1
+  let rgb2test = RGBobj2
+  console.log(rgb1test, rgb2test)
+  let r1 = RGBobj1.r
+  let g1 = RGBobj1.g
+  let b1 = RGBobj1.b
+  let r2 = RGBobj2.r
+  let g2 = RGBobj2.g
+  let b2 = RGBobj2.b
+  console.log('rgb1 = ', r1, g1, b1)
+  console.log('rgb2 = ', r2, g2, b2)
+}
+
+
+  function listen_wheel() {
+  let wheelbtn = document.getElementById('check_wheel')
+
+  wheelbtn.addEventListener('click', test_wheel)
+}
+
 
 function testlog(){
   console.log("---- TEST LOG -----")
@@ -147,10 +180,15 @@ function testlog(){
   //value2 = return_RGB2()
   //console.log(`RGB1 values = ${value1}`)
   //console.log(`RGB2 values = ${value2}`)
+  //test_wheel()
   console.log("----   END LOG ----")
 }
+
+
+
 window.addEventListener('load', (event)=> {
   set_DOM_COLORCALC();
   pickers_listen();
+  //listen_wheel();
 
 })

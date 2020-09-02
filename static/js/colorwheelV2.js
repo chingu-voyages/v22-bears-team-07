@@ -12,10 +12,29 @@ let CENTERY;
 let ENDX;
 let ENDY;
 let HALF;
-let RADIONE; 
+let RADIONE;
 let RADITWO;
 let BALL1;
 let BALL2;
+let CIRCLE;
+
+/*  Wheel grid  ASCII diagram:
+    x=0 ------------------------------------> x = width
+    y=0 |                 ______
+        |  outer(200, 200, 200)   *
+        |          *                   *
+        |       *                 middle any rgb combo or single over 200, but not all three
+        |     *              _____           *
+        |   *  SECTION    *---------* ring=r   *
+        |  *   |   |    *  rgb(0,0,0)*  r |r |r  *
+        | --------------   CENTER --------------
+        |...          BOTTOM HALF OF CIRCLE
+y=height
+   The circle has 16 sections of color.  We need to determine which quadrant
+   by RGB, and which ring
+
+*/
+
 
 function set_WHEEL() {
     console.log('setting wheel')
@@ -26,6 +45,17 @@ function set_WHEEL() {
     HALF = Math.round((CANVAS.width + CANVAS.height) / 4)
     ENDX = CANVAS.width
     ENDY = CANVAS.height
+    let diameter = CANVAS.width
+    let radius = Math.round(diameter / 2)
+    let section = Math.round(diameter / 3.14)
+
+
+    CIRCLE = {
+      'DIAMETER': diameter,
+      'RADIUS': radius,
+      'SECTION': section,
+    }
+
     RADIONE = {
         'xpos': 0,
         'ypos': CENTERY,
@@ -45,7 +75,7 @@ function set_WHEEL() {
         'xpos': 0,
         'ypos': CENTERY,
         'radius': 5,
-        
+
     }
 
     BALL2 = {
@@ -84,7 +114,7 @@ function drawBall1() {
     radgrad2.addColorStop(0, 'rgb(0, 0, 0)');
     radgrad2.addColorStop(0.75, 'rgb(240, 240, 240)');
     radgrad2.addColorStop(1, 'rgba(255, 251, 236, 0.5)');
-    
+
     CTX.beginPath()
 
     /* var radgrad2 = ctx.createRadialGradient(105, 105, 20, 112, 120, 50);
@@ -102,11 +132,13 @@ function drawBall1() {
 function drawBall2() {
     ux = BALL2.xpos - 20
     uy = BALL2.ypos
-    console.log(ux, uy)
-    var radgrad2 = CTX.createRadialGradient(ux, uy, 20, 112, 120, 50);
-    radgrad2.addColorStop(0, 'rgba(200, 200, 200, 0.7)');
-    radgrad2.addColorStop(0.5, 'rgba(0, 0, 0, 1)');
-    radgrad2.addColorStop(1, 'rgba(200, 200, 200, 0.7)');
+    //console.log(ux, uy)
+
+    var radgrad2 = CTX.createRadialGradient(ux, uy, 6, ux - 6, uy, 3);
+    radgrad2.addColorStop(0, 'rgb(110, 110, 110)');
+
+    radgrad2.addColorStop(1, 'rgb(0, 0, 0)');
+
 
     CTX.beginPath()
 
@@ -117,7 +149,7 @@ function drawBall2() {
      * ctx.arc(75, 75, 50, 0, Math.PI * 2, true);
      * reference link: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors
      */
-    CTX.arc(ux + 10, uy, 10, 0, Math.PI * 2, true)
+    CTX.arc(ux + 10, uy, 5, 0, Math.PI * 2, true)
     CTX.fillStyle = radgrad2
     CTX.fill()
 }
@@ -129,11 +161,20 @@ function move_end(points) {
 
 }
 
+function getCOLORs(){
+  let d = CIRCLE.DIAMETER
+  let r = CIRCLE.RADIUS
+  let newcoords = new WheelGrid(d, r)
+  let firstcol = document.getElementById('hex')
+}
+
 function update() {
+  /*
     drawArm1()
     drawArm2()
     drawBall1()
     drawBall2()
+    */
 }
 
 window.addEventListener('load', (event) => {
