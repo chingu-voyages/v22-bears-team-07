@@ -1,3 +1,17 @@
+randomizeArray = (array) => {
+    function getRandomInt(maxInt) {
+        return Math.floor(Math.random() * Math.floor(maxInt))
+    }
+    let j = 0
+    let test = ''
+    for (let i=array.length - 1; i > 0; i--){
+        j = getRandomInt(i)
+        test = array[j]
+        array[j] = array[i]
+        array[i] = test
+    }
+    return array
+}
 createLetterArray = () => {
     const alphabet = 'abcdefghijklmnopqrstuvwxyz'
     let letters = []
@@ -32,17 +46,18 @@ createSlideshow = () => {
     }
 }
 
-randomizeArray = (array) => {
-    function getRandomInt(maxInt) {
-        return Math.floor(Math.random() * Math.floor(maxInt))
+showSlides = () => {
+    createSlideshow()
+    let windowWidth = window.innerWidth
+    let slides = document.getElementsByClassName("slide")
+    let center = Math.floor(slides.length / 2)
+    slides[center].setAttribute("class", "slide active")
+    for (i = center-6; i < center - 2; i++) {
+        slides[i].className = slides[i].className.replace("slide", " slide displayed")
     }
-    let j = 0
-    let test = ''
-    for (let i=array.length - 1; i > 0; i--){
-        j = getRandomInt(i)
-        test = array[j]
-        array[j] = array[i]
-        array[i] = test
+    for (i = center + 1; i < center + 5; i++) {
+        slides[i].className = slides[i].className.replace("slide", "slide displayed")
     }
-    return array
+    // let slidesText = document.getElementsByClassName("slide-text")
 }
+showSlides()
