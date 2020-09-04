@@ -45,19 +45,20 @@ createSlideshow = () => {
         createSlide(letter)
     }
 }
-
-showSlides = () => {
-    createSlideshow()
-    let windowWidth = window.innerWidth
-    let slides = document.getElementsByClassName("slide")
-    let center = Math.floor(slides.length / 2)
-    slides[center].setAttribute("class", "slide active")
-    for (i = center-6; i < center - 2; i++) {
-        slides[i].className = slides[i].className.replace("slide", " slide displayed")
+createSlideshow()
+let active = 12
+let slides = document.getElementsByClassName("slide")
+showSlides = (selected) => {
+    for (i = 0; i < slides.length; i ++) {
+        slides[i].setAttribute,("class", "slide")
     }
-    for (i = center + 1; i < center + 5; i++) {
-        slides[i].className = slides[i].className.replace("slide", "slide displayed")
-    }
-    // let slidesText = document.getElementsByClassName("slide-text")
+    let start = selected - 4
+    if (start < 1) {start = 0}
+    let end = start + 9
+    if (end > slides.length - 1) { end = slides.length - 1}
+    slides[selected].setAttribute("class", "slide active")
 }
-showSlides()
+showSlides(active)
+moveSlides = (n) => {
+    showSlides(active += n)
+}
