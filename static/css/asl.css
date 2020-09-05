@@ -41,9 +41,7 @@ img {
 .letter {
     width: 2em;
 }
-#asl {
-  height: 30vh;
-}
+
 .prev, .next {
   cursor: pointer;
   font-weight: bold;
@@ -73,7 +71,7 @@ img {
   justify-content: center;
 }
 .slide {
-  display: flex;
+  display: none;
   border: 1px solid black;
   flex-direction: column;
   align-items: center;

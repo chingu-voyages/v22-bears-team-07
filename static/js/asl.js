@@ -46,19 +46,32 @@ createSlideshow = () => {
     }
 }
 createSlideshow()
-let active = 12
-let slides = document.getElementsByClassName("slide")
-showSlides = (selected) => {
+let currentIndex = 6
+
+showSlides = (current) => {
+    let slides = document.getElementsByClassName("slide")
     for (i = 0; i < slides.length; i ++) {
-        slides[i].setAttribute,("class", "slide")
+        slides[i].className = "slide"
     }
-    let start = selected - 4
-    if (start < 1) {start = 0}
-    let end = start + 9
-    if (end > slides.length - 1) { end = slides.length - 1}
-    slides[selected].setAttribute("class", "slide active")
+    let left
+    let right
+    if (current < 0) {
+        current = 25
+        left = 24
+        right = 0
+    } else if (current === 0 || current > 25) {
+        current = 0
+        left = 25
+        right = 1
+    } else {
+        left = current - 1
+        right = current + 1
+    }
+    slides[left].setAttribute("class", "slide displayed")
+    slides[current].setAttribute("class", "slide active")
+    slides[right].setAttribute("class", "slide displayed")
 }
-showSlides(active)
+showSlides(currentIndex)
 moveSlides = (n) => {
-    showSlides(active += n)
+    showSlides(currentIndex += n)
 }
