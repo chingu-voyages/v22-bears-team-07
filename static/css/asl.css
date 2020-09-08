@@ -38,6 +38,8 @@ img {
     height: 50px;
     width: 60px;
 }
+/* Code only on asl page */
+
 .letter {
     width: 2em;
 }
@@ -87,8 +89,28 @@ img {
   padding: .5rem;
   width: 20%;
 }
+.slide-button {
+  font-size: 1em;
+  text-align: center;
+  color: #997555;
+  text-shadow: 1px 1px black, -1px 1px darkgray;
+  font-family: 'Red Rose', cursive
+}
 .slide-image {
   width: 100%;
+}
+.slide-input {
+  width: 100%;
+  margin-bottom: .5em;
+}
+.slide-form {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin-bottom: 1em;
+  text-align: center;
 }
 .slide-text {
   color: #997555;
