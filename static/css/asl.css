@@ -41,7 +41,6 @@ img {
 .letter {
     width: 2em;
 }
-
 .prev, .next {
   cursor: pointer;
   font-weight: bold;
@@ -52,6 +51,14 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+}
+.slideshow-button{
+  font-size: 2em;
+  text-align: center;
+  color: #997555;
+  text-shadow: 1px 1px black, -1px 1px darkgray;
+  padding: .25em .5em;
+  font-family: 'Red Rose', cursive
 }
 .slideshow-header {
   font-size: 2em;
@@ -78,7 +85,7 @@ img {
   justify-content: center;
   margin: .25rem;
   padding: .5rem;
-  width: 15%;
+  width: 20%;
 }
 .slide-image {
   width: 100%;
@@ -101,8 +108,8 @@ img {
   justify-content: center;
   margin: .25em;
   padding: .5em;
-
 }
+
 /* --------  MOBILE -----------*/
 
 @media all and (max-width: 799px) and (min-width: 220px) {

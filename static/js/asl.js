@@ -47,7 +47,7 @@ createSlideshow = () => {
 }
 createSlideshow()
 let currentIndex = 6
-
+let correctAnswer = ''
 showSlides = (current) => {
     let slides = document.getElementsByClassName("slide")
     for (i = 0; i < slides.length; i ++) {
@@ -74,4 +74,10 @@ showSlides = (current) => {
 showSlides(currentIndex)
 moveSlides = (n) => {
     showSlides(currentIndex += n)
+}
+
+toggleTest = () => {
+    let item = document.getElementsByClassName("active")
+    correctAnswer = item[0].children[1].innerText
+    console.log('correct Answer', correctAnswer)
 }
