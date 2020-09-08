@@ -35,9 +35,9 @@ let FANCYFONT = {
 //text-shadow: #ffe4d1 -1px 1px;
 let NORMAL = {
    'state': 'normal',
-   'family': "'Red Rose', cursive",
+   'family': "'Rokkitt', serif",
    'weight': "400",
-   'background': "#F5EFF9",
+   'background': "rgb(246 246 247)",
    'fontcolor': "black",
    'textshadow': "-1px 1px #ffe4d1",
    'fontsize': '1em',
@@ -78,7 +78,7 @@ function font_change(){
 
     let name = document.getElementById('change_font').value
     let article = document.getElementById('type_paragraph')
-    console.log(`font_change to ${name}`)
+    //console.log(`font_change to ${name}`)
     let OBJ = null
     switch(name){
        case 'normal':
@@ -102,6 +102,7 @@ function font_change(){
       article.style.color = OBJ.fontcolor
       article.style.textShadow = OBJ.textshadow
       article.style.fontSize = OBJ.fontsize
+      
     }
     else {
     console.log("name was not defined to choose a style")

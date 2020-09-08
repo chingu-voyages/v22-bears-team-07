@@ -120,23 +120,17 @@ h1 {
     text-shadow: 0 0 8px purple;
 }
 
-/*--- FOOTER NAV == HOME NAV/FOOTER ---*/
-#hero_image {
-  height: 50px;
-  width: 60px;
-}
-footer {
-    position: static;
+.value-box {
+
+
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30vh;
-    width: 100vw;
-    bottom: 0px;
-    color: inherit;
-    border-top: 4px double #997555;
-    background: linear-gradient(45deg, transparent, #f0ecef, transparent);
+    padding: 1ch;
+    flex-direction: column;
+
 }
+
+
+
 #default_picker {
   display: flex;
   align-items: center;
@@ -167,9 +161,9 @@ hr {
     background: linear-gradient(60deg, #a1aca426, transparent), linear-gradient(45deg, #7dacb991, #a29952);
 }
 p {
-    font-family: "Red Rose", cursive;
+    font-family: 'Rokkitt', serif;
     font-weight: 400;
-    background-color: rgb(245, 239, 249);
+    background-color: rgb(246 246 247);
     color: black;
     text-shadow: #ffe4d1 -1px 1px;
     border: 1px solid silver;
@@ -183,6 +177,21 @@ section {
 }
 .aboutP{
   background: white;
+  color: black;
+  padding: 2ch;
+  text-shadow: none;
+  font-size: 0.8em;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  box-shadow: 2px 2px 8px black;
+  font-family: 'Rokkitt', serif;
+}
+#aboutWheel {
+  color: white;
+  text-shadow: 1px 1px #165544, 1px 1px 1px #2ad5a8;
+  font-size: 1.5em;
+  padding: 2ch;
+  font-weight: bold;
 }
 select {
   border: 2px solid orange;
@@ -270,7 +279,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 30vh;
+    margin-top: 10px;
     width: 100vw;
     bottom: 0px;
     color: inherit;
@@ -333,11 +342,11 @@ footer {
 
 }
 
-
 /* -------- FOR TAB paragraphs --------*/
 .center-box {
     padding: 0;
     display: flex;
+    position: static;
     flex-direction: column;
     align-items: center;
     justify-content: center;

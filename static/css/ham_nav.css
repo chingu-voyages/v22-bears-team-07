@@ -48,12 +48,7 @@ nav {
         border-radius: 18%;
     }
 }
-.overlay-p {
-    position: absolute;
-    z-index: 33;
-    margin-left: 10%;
-    margin-top: 10%;
-}
+
 .flex-center {
   display: flex;
   justify-content: center;
