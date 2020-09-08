@@ -1,0 +1,113 @@
+﻿
+/* Styles adopted from noodle_nav */
+/* nav colors can be set by page template css  */
+nav {
+    display: flex;
+    flex-direction: row;
+    background: inherit;
+    height: 15vh;
+    border-bottom: 2px solid #997555;
+    color: #f7e5eb;
+    padding-bottom: 2vh;
+}
+
+/* a : hover can be set by page template css  */
+
+.ham_home_link {
+    align-content: flex-start;
+    padding: 10px;
+    border: none;
+    margin-right: 10vw;
+}
+
+    .ham_home_link:hover {
+        animation-name: background-color;
+        animation-duration: 1000ms;
+        animation-fill-mode: forwards;
+    }
+
+@keyframes background-color {
+    0% {
+        color: rgb(100, 100, 100);
+        background-color: rgb(200, 163, 200);
+        border-radius: 10%;
+    }
+
+    50% {
+        color: rgb(200, 0, 200);
+        background-color: rgb(200, 200, 200);
+        box-shadow: 1px 1px 2px grey;
+        border-radius: 13%;
+    }
+
+    100% {
+        color: white;
+        background-color: #f2eff0;
+        transform: scale(1.1);
+        box-shadow: 2px 2px 3px silver;
+        border-radius: 18%;
+    }
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.nav_link_menu {
+    height: 12vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100vw;
+    background: linear-gradient(90deg, #f7e5eb7d, transparent);
+}
+
+.ham_nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #f7e5eb;
+    background: linear-gradient(60deg, #a1aca426, transparent), linear-gradient(45deg, #7dacb991, #a29952);
+}
+
+    .ham_nav a {
+        text-decoration: none;
+        font-weight: bold;
+        width: auto;
+        padding: 2vw;
+        /*color: white;*/
+        color: #7b0519;
+        text-shadow: 1px 1px #f5f3f2;
+    }
+
+.Content_view {
+    color: white;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#hamburger {
+    align-content: flex-end;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: solid 1px silver;
+    border-radius: 10%;
+    margin: 20px;
+    color: black;
+}
+
+
+/* MOBILE */
+@media all and (max-width: 799px) and (min-width: 220px) {
+
+    .flex-center {
+      flex-direction: column;
+    }
+}

@@ -1,0 +1,376 @@
+Documentation for Chingu Voyage 22 
+Script:  wheelDraw.js
+
+DECLARED GLOBALS:
+
+**********************
+
+**colorgrid
+A variable to store the created ColorGrid class which will hopefully serve more purpose as the code is cleaned
+and refactored.
+
+**FAMILY
+A carry over from a prototype of the first color wheel code. May still put in use to put the 
+family name of the color into the html. 
+
+
+**QUADRANTS
+
+The twelve colors found in the piechart, and their corresponding 'H' high, 'M' medium, and 'L' low attributes.
+The RGB color classifications:  fuscia, red, brick, orange, tang, yellow, lime, green, aqua, blue, pursian, purple.
+Each of these colors has a corresponding level of RGB.  For example Reds, Greens and Blues have a 'H'igh concentration 
+of that color.  The RGB split into three different catagories are:
+Depending on the specific color, the range may vary. 
+H is >170
+M is >105
+L is <= 104
+
+The function createHSL(rgb) takes the rgb value 0-255 and places one of the three values into an array according
+to each RGB.
+
+This list is used to find the color Family of any given rgb value with the function:
+getfamily(hsl).   HSL does not stand for Hue Saturation Lightness, but was a variable used to
+describe my approximation of the HSL.
+
+**OUTTER
+The outter ring of coordinates for each color as found by function: listpoints(r).
+
+**CORE
+The center ring of coordinates for each color as found by function: listpoints(r).
+
+**INNER
+The inner ring of the coordinates for each color as found by function: listpoints(r).
+
+**GREYS
+a set for the monocromatic RGB colors white, silver(gray), black.
+
+**COORDS 
+this set uses the family color name as key, and holds a list of the points that will help the 
+draw_sliceCoords(arr).  The order of the keys is very important as the coordinates are pushed to
+it in the order the colors appear in the circle.  
+
+
+************
+CLASS
+************
+
+class ColorGrid is used, and will be used to store the coordinates, hsl, and family names of each
+of the family colors. Still needs more implementation when code is refactored.
+
+************
+Functions
+************
+
+build_coords() 
+
+This function uses 'set_points()' to make sure the outter, inner, and core listpoints() are set.
+It then uses the colorgrid, global class storage to retrieve in order, the outter, core, and inner point
+values, and pushes values to the appropriate space in COORDS.  Each color name(key) in the COORDS then
+stores each color familys coordinates in these lists for later retrieval when the user chooses colors
+and clicks the 'check_wheel' button to have them drawn into the color wheel.
+
+------------------
+
+set_points()
+
+This function uses listpoints(r) to get a list of coordinates for each of the three rings in the circle.
+Each color slice on the wheel has three coordinates that correspond to an outter, core, and inner ring. 
+Future To-do's may include determining which of the three should be drawn to represent 'lightness' of the 
+users chosen color.
+
+--------------
+
+listpoints(r)
+
+listpoints takes one parameter r, the arguement past in is the radius.  The radius determines where the 
+rings points will be placed.  The canvas width and heigth are used to determine the center point.
+angle - angle12 are calculations to convert the degrees into ?RAD? before performing the next calculations.
+To get the X and Y coordinates in the circle, cosine is used for the x, and sine is used for the Y.
+for a x coordinate at a degree location the formula is: radius * Math.cos(angle).
+for a y coordinate at a degree location the formula is: radius * Math.sin(angle). 
+
+After all 12 x and y are found they are placed into a variable r1-r12, and returned in a list.
+because the points are next pushed into a lookup for a color families coordinates, the order of the 
+points here, and the family name they will be pushed in matters.   
+
+See test function: test_quad() to see where the first three points are layed on the wheel. 
+I used this function to determine where my color family name set had errors.  Initially I thought 
+the returned coordinates were clockwise from the (midpoint x, y = 0) start point and then around 
+by fifteen degrees as set by the code.   Turns out the starting point is the (midpoint x, max y) and turns 
+counter clockwise.
+
+-------------
+
+draw_ring(name)
+
+This function is used to draw the monochromatic choices.  The parameter name, is the family color name 
+of the users choice.  For a 'white' choice, the ring is drawn on the outter perimeter of the color wheel.
+For black, a center point arc-circle is drawn.  
+For silver a ring is drawn around the center of the circle.  canvas is used to get teh midX, and midY used 
+in determining the center rings radius.  A silver stroke is used for this center ring. 
+The rings are representative of the placement near the other color choice because they are equidistant 
+from any other color choice that may be given.  White being RGB maxed out, grey/silver being somewhere around (123, 123, 123) the middle, 
+and black as the RGB minimum (0, 0, 0).  The grey ring could be later adjusted according to lightness, by giving it different positions 
+in the circle according to how light or dark the grey is.   Greys only qualification for this code is the it ranges between 85 - 170 and all RGB 
+values are within 9 increments of each other.
+
+------------
+
+get_monoXY(name)  :: Not in use.  Commented out.
+**used in preliminary prototype
+Instead of storing the coordinates of the white, grey and center into the list of color family names, this was 
+initially used to draw points to represent the white, gray/silver and black in different locations to verify the 
+color choice was drawn to canvas.
+
+
+--------------
+
+
+get_slice(family)
+This will use the COORDS set to grab the coordinates to be drawn to the canvas by the family name.
+It returns the coordinates with the variable locations.
+family names:  fuscia, red, .....  purple.
+example:
+
+{
+  'fuscia': [[x, y], [x2, y2], [x3, y3]],
+}
+
+-------------------
+
+draw_sliceCoords(arr)
+
+This function uses the array it is given 'arr' arguement to draw the points into the corresponding 
+color pie slice.  
+
+The if statement checks if it is a nested array, which means it is one of the color families that is NOT
+monochromatic. 
+The else clause will log to the console an Error that the arr parameter was not a nested array at 0.
+monochromatics are drawn by draw_ring(name).
+
+-----------------
+
+checkMono(rgb, family)
+
+will check to see if the max and min of the given rgb number array have a difference greater than 9.
+if the difference is not greater than 9, the monochrome family name is returned.  If it is not, 
+the new family name will be assigned to one of the primaries.  Red, Green, or Blue.  The first maximum value found
+when looping through the list is assigned to index, and a switch case returns 'red' for index 0, 'green' for index 1, and 'blue' for index 2.
+
+----------------
+
+getfamily(hsl)
+
+This function uses the ['H', 'M', 'L'] sets in the QUADRANTS to loop through and match a 
+High Medium Low combination to the ones defined.  The cooresponding HMLs are manually tested and placed 
+into the QUADRANTS by family name.   This whole system could be greatly expanded and be made more accurate 
+by placing new values into the HML system.   Example, creating a ML, MH,  a medium low, and medium high could 
+help clarify the color ranges in the secondary colors and yellow. 
+
+It checks for a monochromatic HML first.  Then if one is not found, it moves to checking the QUADRANTS for a family name.
+There are to clauses in the loop that look first for a not nested array, and then for a nested.  
+Some colors at one point only had one HML value, and did not need to be nested. If this were expanded, they would probably all
+contain more than one HML.
+
+----------------------------------
+
+****** RGB family classification system---------
+
+----------------------------------
+TODO: change references of HSL to HML
+
+function createHSL(rgb)
+
+this function accepts an array, but does not check for array.  It assigns a variable to each of the items.
+red, being rgb[0], green rgb[1]  and blue rgb[2]
+
+It then checks what range that value is in. 
+for greater than 170,  'H' for high is assigned.
+for > 105  'M'edium.
+for <= 104 (else) 'L'ow.
+
+it then returns that list to compare to the ones stored in QUADRANTS to retrieve the color family name.
+
+
+------------------------------------
+
+function getColor(rgb)
+
+The rgb value is assigned first by color_calc.js.  This script handles most of the DOM manipulation, converts from hex, and 
+assigns the values to the HTML for users to see.   This function uses that "rgb(x, y, z)" stored in the doc and then converts it 
+from a string, to a list of numbers that represent the red green blue values.
+It returns that list for use in the other helper functions.
+
+---------------------------------
+
+
+**************PIE CHART COLOR WHEEL RENDER
+
+
+function Shade(ctx, radius)
+
+This after the drawPieSlice and drawChart to create the effect of gradient coloring.  Light on the 
+outside of the circle and darker toward the middle. 
+
+---------------------
+
+**********
+reference used for drawPieSlice() and drawChart():
+https://code.tutsplus.com/tutorials/how-to-draw-a-pie-chart-and-doughnut-chart-using-javascript-and-html5-canvas--cms-27197
+**********
+
+
+drawPieSlice(...)
+parameters:
+ctx (canvas draw)
+centerX
+centerY
+radius
+startAngle
+endAngle
+color
+
+This function draws a pie slice starting at centerX, centerY onto canvas with the startAngle, endAngle, the radius 
+and then the applied color. The ability to apply the gradient here would make 'Shade()' unnesseccary.
+
+
+------------
+drawChart()
+
+This had very little modification from the tutorial in the link above. 
+Other than changing the colors to my twelve family color names. 
+
+
+There are two sets/objects {}  passed into the PieChart internal function. 
+One is colordata,  that holds the pie slice names, and their percentage of the circle they take up. 
+The colordata is then passed into the options{} 
+
+The PieChart internal than uses that data to draw the pie chart onto canvas. 
+
+
+-------------
+INTERNAL OBJECT
+var Piechart = function (options)
+
+This takes the options, gets the canvas, colors and ctx, then calls the 
+drawPieSlice() to draw each section of the chart according to the options passsed into it. 
+The angle is incremented to move onto the next slice in the loop, and the next slice is drawn until 
+the options.data is expended. 
+-------------
+
+After the new Piechart(options) is instantiated, the internal draw() can be called 
+the pie is rendered to the canvas.   
+Shade(ctx, radius) is then called to give the circle a gradient effect. 
+Nothing is returned. 
+
+
+------- MISC ----------
+
+
+
+test_quad() 
+I used this function to see which direction and what the starting point was for 
+the pie slices.  It draws counterclockwise, and not clockwise like I had thought.
+
+
+
+
+***************************
+MAIN RUN --- Wheel Function
+***************************
+
+RunCircle()
+
+This calls the clear_rect() to clear the canvas,  and the drawChart() to draw the underlaying 
+color pie chart, or color wheel. 
+
+It uses the document.getElementId('').innerHTML
+to grab the rgb values set in 'rgb_value1' and 'rgb_value2'
+These two values are set by the color_calc.js
+It then makes these string into a list of three nums with getColor(<the RGB string>) 
+Next it creates the High Medium Low, or hsl for each RGB color with createHSL(<rgb list of nums>)
+next it grabs the family name of the colors dependant on the HML and it's look up key in the 
+QUADRANTS with getfamily(<hsl variable>) 
+
+
+Now we check if it's a monochrome. If it's a monochrome, see if the values are sufficiently within 
+the same range of each other.  If they are keep that name.  If there is a difference larger than 9 in any 
+of the three numbers, assign it a red, green, or blue family name depending on which one is greatest.
+
+The coordinates are retrieved from get_slice(<color family name>)
+
+
+
+After that's all done,  if it is a monochrome, draw a ring with draw_ring(<color family name>)
+and if it's not monochrome, draw_sliceCoords(<coordinates>)
+Coordinates for the monochrome colors are preset, but are not drawn by draw_sliceCoords. 
+There may be errors if they are passed into the wrong function. 
+draw_ring uses a string parameter, 
+draw_sliceCoords uses an array.
+
+
+**************************************
+END FUNCTIONs
+**************************************
+
+clear_rect() 
+
+this function just uses the ctx to clear the canvas. 
+
+--------
+listen_chart() 
+
+sets the listener for the 'check_wheel' button.
+
+-----
+
+finally:
+add event listener to run on load:
+listen_chart()
+draw_chart()
+build_coords()
+
+
+NOTES***
+I still need to run through all this and refactor, and clean. 
+
+doc author:  Nellie Tobey
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

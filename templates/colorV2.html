@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+        <meta name="author" content="Regina & Nellie">
+        <meta name="description" content="Created for Chingu Voyage 22, a site to discover the possibilities of accessibility.">
+    <!-- images/icons/googlefonts/fontawesome -->
+    <link rel="icon" href={{ url_for('static', filename='images/SAS_logo.png')}} />
+    <!-- Font awesome SVG-->
+    <script src="https://kit.fontawesome.com/b570a31fd0.js" crossorigin="anonymous"></script>
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@300&display=swap" rel="stylesheet">
+    <!--Stylesheets-->
+    <link rel="stylesheet" href={{ url_for('static', filename='css/colorwheelV3.css')}}/>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/ham_nav.css')}} />
+
+    <!-- javascript -->
+
+      <script type="text/javascript" src={{ url_for('static', filename='js/ham_nav.js')}}></script>
+      <script type="text/javascript" src={{ url_for('static', filename='js/wheelDraw.js')}}></script>
+      <script type="text/javascript" src={{ url_for('static', filename='js/color_calc.js')}}></script>
+      <script type="text/javascript" src={{ url_for('static', filename='js/tabs.js')}}></script>
+      <script type="text/javascript" src={{ url_for('static', filename='js/typeface.js')}}></script>
+
+    <title>Contrast and Color</title>
+</head>
+<body id="body">
+  <!-- NAV BAR -->
+<nav class='ham_nav' id="my_nav">
+
+      <div class="nav_link_menu" id="nav_link_menu">
+         <a class="ham_home_link" id="nav-hero" href="/" aria-label="home Sound and Silence"><image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image></a>
+         <div class="flex-center">
+         <a  class="ham_link" href="/color">Color and Contrast</a>
+          <a  class="ham_link" href="/asl">American Sign Language</a>
+
+       </div>
+      </div>
+      <i class="fas fa-bars fa-2x" id="hamburger" value="ON" aria-label="this icon when clicked will hide or show the menu link items"></i>
+  </nav>
+
+    <header id="title" class="title">
+        <h1 class="thin"> Color and Contrast</h1>
+    </header>
+    <!-- MAIN CONTENT -->
+    <main id="main">
+        <h2 id="wheel-title"> Interactive Color Wheel </h2>
+        <hr />
+        <!--- COLOR WHEEL VALUES -->
+        <div id="rgb_bar">
+          <div class="value-box">
+            <label for="rgb_value1">RGB 1:</label>
+            <h2 id="rgb_value1">
+                rgb(0, 0, 0)
+            </h2>
+          </div>
+          <div class="value-box">
+            <label for="rgb_value2">RGB 2:</label>
+            <h2 id="rgb_value2">
+                rgb(0, 0, 0)
+            </h2>
+          </div>
+        </div>
+        <hr />
+        <div id="hex-bar">
+          <div class="value-box">
+          <label for="hex_display1">HEX 1:</label>
+          <h2 id="hex_display1">
+            #00000
+          </h2>
+        </div>
+        <div class="value-box">
+          <label for="hex_display2">HEX 2:</label>
+          <h2 id="hex_display2">
+            #00000
+          </h2>
+        </div>
+        </div>
+        <hr />
+
+
+        <div id="default_picker" aria-label="The input will bring up the default color picker from your system. Because the wheel system can not be accurate to the pixel, your color choice can be better defined with the system picker.">
+
+
+           <label for="hex_color1">COLOR</label>
+            <input type="color" id="hex_color1"/>
+            <label for="hex_color2">COLOR</label>
+            <input type="color" id="hex_color2" />
+        </div>
+        <div class="flex-center-sm">
+        <button id="check_wheel" aria-label="get the approximate location of the colors on the wheel image">Check wheel</button>
+      </div>
+
+
+        <hr />
+        <!-- COLOR WHEEL INTERACTION -->
+        <div class="screen">
+
+             <canvas id="mycanvas" width="300px" height="300px">
+             </canvas>
+         </div>
+
+            <hr />
+
+
+<section id="aboutWheel" class="theme-background">
+  <h2 id="about-title"> About the Wheel </h2>
+
+  <article class="aboutP">
+
+      To check if your colors are contrasting, pick a color from the color selector.
+      The apporximate color family will be found with the javaScript located in this page.
+      If the color is a monochromatic, meaning it has no specific value in it's RGB declaration that
+      is greater than 9 away from any other value, it will be classified as one of the main three monochromatics.
+      <br><br>
+
+
+      <li>white rgb(255, 255, 255) :  when all the values in RGB approach max, which is 255</li>
+      <li>grey range()(rgb(123, 123, 123): when all the values are close, but are inbetween the max 255, and min 0.</li>
+      <li>black rgb(0, 0, 0): when all the values are approaching 0 in the RGB.
+
+
+
+        <br><br>
+
+        The black range will be drawn as a center point in the circle.
+        <br>
+        The grey range will be a ring representative of center.
+        <br>
+        The white will be an outter ring.
+        <br>
+          This is meant to be a guide only, and is not intended to find the actual ratio as given the link in "Ratio".
+
+
+
+  </article>
+</section>
+
+            <hr />
+
+  <!-- sections/articles - Explanations -->
+  <div class="center-box">
+                  <span class="tab-row">
+                  <button class="tab" id="tabCompliment" onclick="openTab(this)" value="Compliment">Comp...</button>
+                  <button class="tab" id="tabContrast"onclick="openTab(this)" value="Contrast">Contrast</button>
+                  <button class="tab" id="tabRatio" onclick="openTab(this)" value="Ratio">Ratio</button>
+                  <button class="tab" id="tabExample" onclick="openTab(this)" value="Example">Example</button>
+                      </span>
+
+                  <div id="Compliment" class="tabcontent theme-background">
+                      <section id="Compliment-Colors">
+                      <article>
+                      <h3 class="tabTitle rainbow">Compliment</h3>
+
+                      <p>
+                        A little explanation of primary, secondary, and the color wheel in art.
+                        <br>
+                        The three primary colors are red, yellow and blue.  Secondary colors, colors inbetween the primaries are orange, green and purple.
+                        <br> The color wheel is an art tool that helps artists visualize where colors are on this spectrum in relation to each other.
+                        When paint is mixed, like a primary yellow and a primary blue, there will be the effect that a green is created.
+                        It is only an effect however, because the yellow pigment and the blue pigment don't actually combine, but the color reflected off them
+                        becomes mixed as it bounces back to the eye to make it seem like a new color is made.  Green.
+                        <br>A compliment color can be found on the color wheel in the same quadrant as each others. As neighbors on the color wheel
+                      the colors are relational to the primary color they are made from.  Green is a compliment of yellow and blue.  In very basic terms
+                      yellow and blue can be combined to appear green.  These three colors are complimentary to each other.
+                          <br />
+                          Compliment colors can be great for fluid visual design, and can be used throughout a site for design purposes.
+                          The exception being when information is important. This information, such as form text and labels, text that is there to help guide
+                          users, and instructions should never be complimentary colors.  Accenting with a complementary color is fine. Just remember you want
+                          everyone to see the hard work you did.  Even if they lost their glasses. </p>
+                          </article>
+                      </section>
+                  </div>
+
+                  <div id="Contrast" class="tabcontent theme-background">
+                      <section id="Contrasting-Colors">
+                      <article>
+                      <h3 class="tabTitle rainbow">Contrast</h3>
+                      <p>
+                          A more technical explanation: <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast">MDN docs</a>.
+                          <br />
+                          Contrast in the art world is when two colors are opposite each other on the color wheel.  To the normal human eye, these colors seem to battle agains each other
+                          to gain the most focus.   While true contrast in art are the most saturated, or closest to their prime color root, oppose each other on the color wheel, in websites there are a few differences.
+                          For example, while red and green are 'clashing' or opposing colors on the wheel, someone who is red green color blind will not see the same thing others do.
+                          To adjust for that, you can adjust the brightness of the foreground and the text color.  Black and white are full contrast.  When color starts
+                          being added to the mix, remember that the lightness is just a big a factor in the contrast ratio as are the color choices.
+                      </p>
+                          </article>
+                      </section>
+                  </div>
+
+                  <div id="Ratio" class="tabcontent theme-background">
+                      <section id="Explanation-Ratio">
+                          <article>
+                              <h3 class="tabTitle rainbow">Ratio</h3>
+                              <p>
+                                  A more technical explanation: <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast">MDN docs</a>.
+                                  <br />
+                                  There are many sites that can calculate your contrast ratio.  It's only a google away.  But if you can keep in mind the wheel above, it is easier
+                                  to develop the proper ratio on your own.   The text against the background is the most important, then comes the font size, and it's readability.<br />
+                                  A fancy, cursive font can be very appealing, but check to make sure it doesn't become invisible when the contrast starts to get low.
+                              </p>
+                              <div class="flex-center">
+                              <a href="https://webaim.org/resources/contrastchecker/">webAIM</a>
+                                  </div>
+                          </article>
+                      </section>
+                  </div>
+
+                  <div id="Example" class="tabcontent">
+
+                      <div class="theme-background">
+                          <section id="typeface">
+                              <article id="type_explained" class="rainbow">
+                                  <h3 id="typeface-title" class="flex-center rainbow">The importance of font selection.</h3>
+                                  <p id="type_paragraph" class="noblur">
+                                      The contrast of a page is very important to those who do not have typical eyesight.
+                                      <br> If you, or someone you know has to wear glasses for nearsightedness, imagine
+                                      they had to read this without their glasses.  Would they have to struggle?
+                                      <br>
+                                      Colorblindness can also play a role.  If your text color and background color are not sufficiently contrasted,
+                                      a yellow on green may become impossible for someone with <a href="https://www.color-blindness.com/deuteranopia-red-green-color-blindness/">deuteranomaly</a> to see.
+                                      Font types play a role in contrast in this way also.  If a text is thin, or the font is easily blurred into
+                                      visually incoherent blobs, the information is now inaccessible.
+                                      If the font is hard to read, it will be hard to read for those that have visual differences.
+                                      <br><br>
+                                      Below, try changing the font with the selections, and blurring this article with the button.
+                                  </p>
+
+
+                              </article>
+
+                              <div class="flex-center white">
+                                  <label for='change_font'>FONT:</label>
+                                  <select id="change_font">
+                                      <option value="normal" selected>original</option>
+                                      <option value="mono">monochromatic</option>
+                                      <option value="fancy">Fancy font</option>
+                                  </select>
+
+                                  <button class="type-btn rainbow" id="blur_font">blur</button>
+                              </div>
+                          </section>
+                      </div>
+                  </div>
+                </div> <!-- end center box -->
+
+
+    </main>
+
+    <footer id="footer">
+        <image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image>
+        <h4 class="footer-info">Chingu Voyage 22 Bear team 07:  Regina and Nellie</h4>
+    </footer>
+</body>
+</html>
