@@ -38,23 +38,35 @@ img {
     height: 50px;
     width: 60px;
 }
+/* Code only on asl page */
+
 .letter {
     width: 2em;
 }
+.prev, .next {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 3em;
+}
 #slideshow {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
 }
-.slideshow-button {
+.slideshow-button{
+  font-size: 2em;
+  text-align: center;
   color: #997555;
-  font-size: 1em;
+  text-shadow: 1px 1px black, -1px 1px darkgray;
+  padding: .25em .5em;
+  font-family: 'Red Rose', cursive
 }
 .slideshow-header {
-  font-size: 1.5em;
+  font-size: 2em;
   display: flex;
   flex-direction: column;
+  align-items: center;
   text-align: center;
   color: #997555;
   text-shadow: 1px 1px black, -1px 1px darkgrey;
@@ -63,21 +75,63 @@ img {
 #slideshow-items {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
 }
 .slide {
+  display: none;
   border: 1px solid black;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: .5em;
+  margin: .25rem;
+  padding: .5rem;
+  width: 20%;
+}
+.slide-button {
+  font-size: 1em;
+  text-align: center;
+  color: #997555;
+  text-shadow: 1px 1px black, -1px 1px darkgray;
+  font-family: 'Red Rose', cursive
 }
 .slide-image {
-  width: 6rem;
+  width: 100%;
 }
-.slide-text {
+.slide-input {
+  width: 100%;
+  margin-bottom: .5em;
+}
+.slide-form {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin-bottom: 1em;
   text-align: center;
 }
+.slide-text {
+  color: #997555;
+  font-size: 2em;
+  text-shadow: 1px 1px black, -1px 1px darkgrey;
+  text-align: center;
+}
+.active {
+  display: flex;
+  width: 40%
+}
+.displayed {
+  display: flex;
+  border: 1px solid black;
+  flex-direction: column;
+  align-items: top;
+  justify-content: center;
+  margin: .25em;
+  padding: .5em;
+}
+
 /* --------  MOBILE -----------*/
 
 @media all and (max-width: 799px) and (min-width: 220px) {
