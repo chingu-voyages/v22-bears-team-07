@@ -89,12 +89,18 @@ img {
   padding: .5rem;
   width: 20%;
 }
+.answer {
+  font-size: 2em;
+  text-align: center;
+  color: #997555;
+  text-shadow: 1px 1px black, -1px 1px darkgray;
+  margin: auto;
+}
 .slide-button {
   font-size: 1em;
   text-align: center;
   color: #997555;
   text-shadow: 1px 1px black, -1px 1px darkgray;
-  font-family: 'Red Rose', cursive
 }
 .slide-image {
   width: 100%;
@@ -112,6 +118,7 @@ img {
   margin-bottom: 1em;
   text-align: center;
 }
+
 .slide-text {
   color: #997555;
   font-size: 2em;
@@ -130,6 +137,21 @@ img {
   justify-content: center;
   margin: .25em;
   padding: .5em;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.modal {
+  background-color: black;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: .5rem;
 }
 
 /* --------  MOBILE -----------*/
