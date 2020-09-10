@@ -95,7 +95,7 @@ moveSlides = (n) => {
 
 createModal = () => {
     let wrapper = document.createElement("div")
-    wrapper.setAttribute("class", "wrapper hide")
+    wrapper.setAttribute("id", "wrapper")
     let modal = document.createElement("div")
     modal.setAttribute("class", "modal")
     let b = document.createElement("button")
@@ -111,17 +111,19 @@ createModal = () => {
     return wrapper
 }
 closeModal = () => {
-    let modal = document.getElementsByClassName("wrapper")
-    modal.setAttribute("class", "wrapper hide")
+    let modal = document.getElementById("wrapper")
+    let parent = modal.parentNode
+    if (modal) {
+        parent.removeChild(modal)
+    }
 }
 toggleTest = () => {
     let item = document.getElementsByClassName("active")
     correctAnswer = item[0].children[1].innerText
     item[0].children[1].innerHTML = ''
-    let form = item[0].children[2]
+    let form = item[00].children[2]
     form.setAttribute("class", "slide-form active")
     let modal = createModal()
-    modal.setAttribute("class", "wrapper show")
     form.addEventListener("submit", function(event) {
         event.preventDefault()
         inputAnswer = form.elements.answer.value
@@ -129,7 +131,6 @@ toggleTest = () => {
             inputAnswer = inputAnswer.slice(0,1)
         }
         let correctLetter = correctAnswer.slice(1)
-        console.log('correctLetter', correctLetter, 'input Answer', inputAnswer)
         if (correctLetter === inputAnswer.toLowerCase()){
             form.setAttribute("class", "slide-form hide")
             item[0].children[1].innerHTML = correctAnswer
