@@ -59,6 +59,13 @@ footer {
   border-radius: 15%;
   height: 48px;
 }
+
+#image-iris-button {
+  margin-left: 10vw;
+}
+#image-cpu-button {
+  margin-right: 10vw;
+}
 article {
   display: flex;
   justify-content: space-between;
@@ -68,6 +75,8 @@ article {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 }
 
 p{
@@ -113,9 +122,10 @@ p{
     padding: 1ch;
     font-size: 15px;
   }
-  #nav-hero {
-    display: none;
+  img {
+    width: 30vw;
   }
+
   #resources {
     padding: 2ch;
     font-size: 15px;

@@ -33,11 +33,11 @@
 <body id="body">
   <!-- NAV BAR -->
 <nav class='ham_nav' id="my_nav">
-
+       <a class="ham_home_link" id="nav-hero" href="/" aria-label="home Sound and Silence"><image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image></a>
       <div class="nav_link_menu" id="nav_link_menu">
-         <a class="ham_home_link" id="nav-hero" href="/" aria-label="home Sound and Silence"><image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image></a>
+
          <div class="flex-center">
-         <a  class="ham_link" href="/color">Color and Contrast</a>
+         <a  class="ham_link" href="/">Sound and Silence</a>
           <a  class="ham_link" href="/asl">American Sign Language</a>
 
        </div>
@@ -115,16 +115,17 @@
   <article class="aboutP">
 
       To check if your colors are contrasting, pick a color from the color selector.
-      The apporximate color family will be found with the javaScript located in this page.
+      The approximate color family will be found with the javaScript located in this page.
       If the color is a monochromatic, meaning it has no specific value in it's RGB declaration that
       is greater than 9 away from any other value, it will be classified as one of the main three monochromatics.
       <br><br>
 
-
+      <ol>
       <li>white rgb(255, 255, 255) :  when all the values in RGB approach max, which is 255</li>
       <li>grey range()(rgb(123, 123, 123): when all the values are close, but are inbetween the max 255, and min 0.</li>
       <li>black rgb(0, 0, 0): when all the values are approaching 0 in the RGB.
-
+      <li>Any grey that has a value 10 or greater in the RGB will be classified by the max R, G, or B into that family</li>
+      </ol>
 
 
         <br><br>
@@ -135,7 +136,7 @@
         <br>
         The white will be an outter ring.
         <br>
-          This is meant to be a guide only, and is not intended to find the actual ratio as given the link in "Ratio".
+          This is meant to be a guide only, and is not intended to find the actual ratio. A link to actual ratio calculations is provided in the "Ratio" tab below.
 
 
 
@@ -145,7 +146,7 @@
             <hr />
 
   <!-- sections/articles - Explanations -->
-  <div class="center-box">
+  <div class="center-box padded-black">
                   <span class="tab-row">
                   <button class="tab" id="tabCompliment" onclick="openTab(this)" value="Compliment">Comp...</button>
                   <button class="tab" id="tabContrast"onclick="openTab(this)" value="Contrast">Contrast</button>
@@ -156,12 +157,12 @@
                   <div id="Compliment" class="tabcontent theme-background">
                       <section id="Compliment-Colors">
                       <article>
-                      <h3 class="tabTitle rainbow">Compliment</h3>
+                      <h3 class="tabTitle olive">Compliment</h3>
 
                       <p>
                         A little explanation of primary, secondary, and the color wheel in art.
                         <br>
-                        The three primary colors are red, yellow and blue.  Secondary colors, colors inbetween the primaries are orange, green and purple.
+                        The three primary colors are red, yellow and blue.  Secondary colors, colors in-between the primaries are orange, green and purple.
                         <br> The color wheel is an art tool that helps artists visualize where colors are on this spectrum in relation to each other.
                         When paint is mixed, like a primary yellow and a primary blue, there will be the effect that a green is created.
                         It is only an effect however, because the yellow pigment and the blue pigment don't actually combine, but the color reflected off them
@@ -181,7 +182,7 @@
                   <div id="Contrast" class="tabcontent theme-background">
                       <section id="Contrasting-Colors">
                       <article>
-                      <h3 class="tabTitle rainbow">Contrast</h3>
+                      <h3 class="tabTitle olive">Contrast</h3>
                       <p>
                           A more technical explanation: <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast">MDN docs</a>.
                           <br />
@@ -198,7 +199,7 @@
                   <div id="Ratio" class="tabcontent theme-background">
                       <section id="Explanation-Ratio">
                           <article>
-                              <h3 class="tabTitle rainbow">Ratio</h3>
+                              <h3 class="tabTitle olive">Ratio</h3>
                               <p>
                                   A more technical explanation: <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast">MDN docs</a>.
                                   <br />
@@ -218,11 +219,11 @@
                       <div class="theme-background">
                           <section id="typeface">
                               <article id="type_explained" class="rainbow">
-                                  <h3 id="typeface-title" class="flex-center rainbow">The importance of font selection.</h3>
+                                  <h3 id="typeface-title" class="flex-center olive">The importance of font selection.</h3>
                                   <p id="type_paragraph" class="noblur">
                                       The contrast of a page is very important to those who do not have typical eyesight.
                                       <br> If you, or someone you know has to wear glasses for nearsightedness, imagine
-                                      they had to read this without their glasses.  Would they have to struggle?
+                                      they had to read this without their glasses.  Would they struggle?
                                       <br>
                                       Colorblindness can also play a role.  If your text color and background color are not sufficiently contrasted,
                                       a yellow on green may become impossible for someone with <a href="https://www.color-blindness.com/deuteranopia-red-green-color-blindness/">deuteranomaly</a> to see.
@@ -236,8 +237,8 @@
 
                               </article>
 
-                              <div class="flex-center white">
-                                  <label for='change_font'>FONT:</label>
+                              <div class="center-inputs white">
+                                  <label for='change_font' class="large-text">FONT:</label>
                                   <select id="change_font">
                                       <option value="normal" selected>original</option>
                                       <option value="mono">monochromatic</option>

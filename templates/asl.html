@@ -17,8 +17,9 @@
 </head>
 <body id="body">
     <nav class='ham_nav' id="my_nav">
+       <a class="ham_home_link" id="nav-hero" href="/" aria-label="home Sound and Silence"><image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image></a>
         <div class="nav_link_menu" id="nav_link_menu">
-           <a class="ham_home_link" id="nav-hero" href="/" aria-label="home Sound and Silence"><image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image></a>
+
            <div class="flex-center">
            <a  class="ham_link" href="/color">Color and Contrast</a>
            <a  class="ham_link" href="/asl">American Sign Language</a>
@@ -29,7 +30,8 @@
     </nav>
 <main id="main">
     <section id="asl">
-    <header id="page-title">American Sign Language
+    <header id="page-title">
+        <h2>American Sign Language</h2>
         <div>
             <image class="letter" src={{url_for('static', filename='images/asl/Aa.jpg')}} alt="A sign language A"/>
             <image class="letter" src={{url_for('static', filename='images/asl/Ss.jpg')}} alt="A sign language S"/>
@@ -37,11 +39,13 @@
         </div>
     </header>
     <section id="slideshow">
-        <div class="slideshow-header"
-            <h2>How Many Signs Do You Know?</h2>
-            <button class="slideshow-button" onclick="createSlideshow()">Click to See Signs</button>
-            <div id="slideshow-items"></div>
+        <div class="slideshow-header">
+            <h3>How Many Signs Do You Know?</h3>
         </div>
+        <a class="prev" onclick="moveSlides(-1)">&lArr;</a>
+        <div id="slideshow-items"></div>
+        <a class="next" onclick="moveSlides(1)">&rArr;</a>
+        <button class="slideshow-button" onclick="toggleTest()">Test Yourself</button>
     </section>
 </section>
 </main>
