@@ -135,9 +135,7 @@ img {
 /* --------  MOBILE -----------*/
 
 @media all and (max-width: 799px) and (min-width: 220px) {
-  #nav-hero {
-    display: none;
-  }
+
 }
 /* light back: #ecf1f1*/
 /* dark back: #25262d*/
