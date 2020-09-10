@@ -26,9 +26,9 @@ let FANCYFONT = {
   'state': 'low',
   'family': "'Tangerine', cursive",
   'weight': '100',
-  'background': 'lime',
-  'fontcolor': 'green',
-  'textshadow': '1px 1px 2px white',
+  'background': '#aebeb0',
+  'fontcolor': 'white',
+  'textshadow': 'none',
   'fontsize': '2em',
 }
 
@@ -36,7 +36,7 @@ let FANCYFONT = {
 let NORMAL = {
    'state': 'normal',
    'family': "'Rokkitt', serif",
-   'weight': "400",
+   'weight': "700",
    'background': "rgb(246 246 247)",
    'fontcolor': "black",
    'textshadow': "-1px 1px #ffe4d1",
@@ -102,7 +102,7 @@ function font_change(){
       article.style.color = OBJ.fontcolor
       article.style.textShadow = OBJ.textshadow
       article.style.fontSize = OBJ.fontsize
-      
+
     }
     else {
     console.log("name was not defined to choose a style")

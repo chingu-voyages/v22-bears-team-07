@@ -35,7 +35,7 @@
 <nav class='ham_nav' id="my_nav">
        <a class="ham_home_link" id="nav-hero" href="/" aria-label="home Sound and Silence"><image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image></a>
       <div class="nav_link_menu" id="nav_link_menu">
-        
+
          <div class="flex-center">
          <a  class="ham_link" href="/">Sound and Silence</a>
           <a  class="ham_link" href="/asl">American Sign Language</a>
@@ -146,7 +146,7 @@
             <hr />
 
   <!-- sections/articles - Explanations -->
-  <div class="center-box">
+  <div class="center-box padded-black">
                   <span class="tab-row">
                   <button class="tab" id="tabCompliment" onclick="openTab(this)" value="Compliment">Comp...</button>
                   <button class="tab" id="tabContrast"onclick="openTab(this)" value="Contrast">Contrast</button>
@@ -157,7 +157,7 @@
                   <div id="Compliment" class="tabcontent theme-background">
                       <section id="Compliment-Colors">
                       <article>
-                      <h3 class="tabTitle rainbow">Compliment</h3>
+                      <h3 class="tabTitle olive">Compliment</h3>
 
                       <p>
                         A little explanation of primary, secondary, and the color wheel in art.
@@ -182,7 +182,7 @@
                   <div id="Contrast" class="tabcontent theme-background">
                       <section id="Contrasting-Colors">
                       <article>
-                      <h3 class="tabTitle rainbow">Contrast</h3>
+                      <h3 class="tabTitle olive">Contrast</h3>
                       <p>
                           A more technical explanation: <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast">MDN docs</a>.
                           <br />
@@ -199,7 +199,7 @@
                   <div id="Ratio" class="tabcontent theme-background">
                       <section id="Explanation-Ratio">
                           <article>
-                              <h3 class="tabTitle rainbow">Ratio</h3>
+                              <h3 class="tabTitle olive">Ratio</h3>
                               <p>
                                   A more technical explanation: <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast">MDN docs</a>.
                                   <br />
@@ -219,7 +219,7 @@
                       <div class="theme-background">
                           <section id="typeface">
                               <article id="type_explained" class="rainbow">
-                                  <h3 id="typeface-title" class="flex-center rainbow">The importance of font selection.</h3>
+                                  <h3 id="typeface-title" class="flex-center olive">The importance of font selection.</h3>
                                   <p id="type_paragraph" class="noblur">
                                       The contrast of a page is very important to those who do not have typical eyesight.
                                       <br> If you, or someone you know has to wear glasses for nearsightedness, imagine
@@ -237,8 +237,8 @@
 
                               </article>
 
-                              <div class="flex-center white">
-                                  <label for='change_font'>FONT:</label>
+                              <div class="center-inputs white">
+                                  <label for='change_font' class="large-text">FONT:</label>
                                   <select id="change_font">
                                       <option value="normal" selected>original</option>
                                       <option value="mono">monochromatic</option>
