@@ -17,7 +17,8 @@ nav {
     align-content: flex-start;
     padding: 10px;
     border: none;
-    margin-right: 10vw;
+    padding-right: 0;
+
 }
 
     .ham_home_link:hover {
@@ -70,6 +71,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     color: #f7e5eb;
+    height: 10ch;
     background: linear-gradient(60deg, #a1aca426, transparent), linear-gradient(45deg, #7dacb991, #a29952);
 }
 
@@ -79,6 +81,7 @@ nav {
         width: auto;
         /*padding: 2vw;*/
         /*color: white;*/
+        padding-right: 4ch;
         color: #7b0519;
         text-shadow: 1px 1px #f5f3f2;
     }
@@ -110,5 +113,8 @@ nav {
 
     .flex-center {
       flex-direction: column;
+    }
+    .ham_nav a {
+      padding: 0;
     }
 }
