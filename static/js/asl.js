@@ -36,7 +36,7 @@ createInputForm = () => {
     slideForm.appendChild(slideInput)
     slideForm.appendChild(slideButton)
     return slideForm
-}
+} 
 createSlide = (letter) => {
     let slide = document.createElement("div")
     slide.setAttribute("class","slide")
@@ -48,14 +48,13 @@ createSlide = (letter) => {
     slideImage.setAttribute("class","slide-image")
     slide.appendChild(slideImage)
     let slideText = document.createElement("p")
-    slideText.innerText = letter
+    slideText.innerHTML = letter
     slideText.setAttribute("class", "slide-text")
     slide.appendChild(slideText)
     let slideForm = createInputForm()
     slide.appendChild(slideForm)
     document.getElementById("slideshow-items").appendChild(slide)
 }
-
 createSlideshow = () => {
     let letters = createLetterArray()
     for ( const letter of letters) {
@@ -94,17 +93,52 @@ moveSlides = (n) => {
     showSlides(currentIndex += n)
 }
 
+createModal = () => {
+    let wrapper = document.createElement("div")
+    wrapper.setAttribute("id", "wrapper")
+    let modal = document.createElement("div")
+    modal.setAttribute("class", "modal")
+    let b = document.createElement("button")
+    b.setAttribute("class", "button")
+    b.setAttribute("onclick", "closeModal()")
+    b.innerHTML = 'X'
+    modal.appendChild(b)
+    let p = document.createElement("p")
+    p.setAttribute("class", "answer")
+    p.innerHTML = 'Correct'
+    modal.appendChild(p)
+    wrapper.appendChild(modal)
+    return wrapper
+}
+closeModal = () => {
+    let modal = document.getElementById("wrapper")
+    let parent = modal.parentNode
+    if (modal) {
+        parent.removeChild(modal)
+    }
+}
 toggleTest = () => {
     let item = document.getElementsByClassName("active")
     correctAnswer = item[0].children[1].innerText
     item[0].children[1].innerHTML = ''
-    let form = item[0].children[2]
+    let form = item[00].children[2]
     form.setAttribute("class", "slide-form active")
+    let modal = createModal()
     form.addEventListener("submit", function(event) {
-        inputAnswer = form.elements.answer.value
-        console.log("inputAnswer ", inputAnswer)
         event.preventDefault()
+        inputAnswer = form.elements.answer.value
+        if (inputAnswer.length > 1) {
+            inputAnswer = inputAnswer.slice(0,1)
+        }
+        let correctLetter = correctAnswer.slice(1)
+        if (correctLetter === inputAnswer.toLowerCase()){
+            form.setAttribute("class", "slide-form hide")
+            item[0].children[1].innerHTML = correctAnswer
+            item[0].appendChild(modal)
+        } else {
+            form.children[1].innerHTML = 'Try Again'
+        }
         form.elements.answer.value=''
-        })
-    console.log('correct Answer', correctAnswer)
+
+    })
 }
