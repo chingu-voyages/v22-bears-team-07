@@ -1,5 +1,11 @@
-# v22-bears-team-07
-Sight and Sound | Voyage-22 | https://chingu.io/
+# Sound and Silence  <img src="https://github.com/chingu-voyages/v22-bears-team-07/blob/dev/static/images/SAS_logo.png" width='50px' height='60px' alt="logo design, a head with gaming headphones on.">
+
+
+ v22-bears-team-07  |  https://chingu.io/
+ 
+ ## TEAM
+ Regina: https://github.com/rmcguire6  || 
+ Nellie: https://github.com/nelliesnoodles
 
 This project initially started as an attempt to use Python to create a package that could serve as a free text reader, and speech to text editor.
 Because of time constraints and the Linux/Ubuntu variables that would have to be altered to incorporate the Python needed to make this possible, the 
@@ -9,6 +15,8 @@ The simple files do work on windows, and can be found in the file: chinguV22Test
 
 
 ## Page:  Sound and Silence
+
+
 
 This page will demonstrate the importance of the alt attribute using buttons that a user can press to hear the readback of the alt attribute to three images.
 A brief overview and a list of resources round out this page.
