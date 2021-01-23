@@ -17,15 +17,37 @@
 </head>
 <body id="body">
     <nav class='ham_nav' id="my_nav">
-       <a class="ham_home_link" id="nav-hero" href="/" aria-label="home Sound and Silence"><image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image></a>
+       <a class="ham_home_link"
+          id="nav-hero" href="/"
+          aria-label="home Sound and Silence">
+          <image src={{ url_for('static', filename='images/SAS_logo.png')}}
+          id="hero_image" alt="A sillouette of a head with gaming headphones on.">
+          </image></a>
         <div class="nav_link_menu" id="nav_link_menu">
 
-           <div class="flex-center">
-           <a  class="ham_link" href="/color">Color and Contrast</a>
-           <a  class="ham_link" href="/asl">American Sign Language</a>
-           <a class="ham_link" href="#footer">Bottom</a>
-         </div>
+          <div class="nav-div-links">
+            <a class="ham_link"
+               id="CC_link"
+               href="/color"
+               aria-label="Color and Contrast">
+                 <i class="fas fa-paint-brush"></i>
+               CC</a>
+           <a class="ham_link"
+               href="/"
+               id="SS_link"
+               aria-label="Sound and Silence"
+               title="Sound and Silence">
+               <i class="fas fa-assistive-listening-systems"></i>
+               SS</a>
+           <a class="ham_link"
+               id="ASL_link"
+               href="#"
+               aria-label="American Sign Language" href="/#">
+                <i class="fas fa-american-sign-language-interpreting"></i>
+               ASL</a>
+
         </div>
+    </div>
         <i class="fas fa-bars fa-2x" id="hamburger" value="ON" aria-label="this icon when clicked will hide or show the menu link items"></i>
     </nav>
 <main id="main">
