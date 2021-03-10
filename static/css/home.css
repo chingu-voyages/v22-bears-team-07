@@ -5,6 +5,9 @@
     color: black;
     font-family: 'Red Rose', cursive;
 }
+main {
+  margin: 10px;
+}
 
 /* CHANGES to img, may effect #hero_image */
 img {
@@ -15,10 +18,9 @@ img {
 }
 header {
   font-size: 2em;
-  border-bottom: 1px solid grey;
   text-align: center;
   color: #997555;
-  text-shadow: 1px 1px black, -1px 1px darkgrey;
+
 }
 
 /* footer can be pushed down or up using the margin-top value */
@@ -52,12 +54,13 @@ footer {
   height: 50px;
 }
 .audio-button {
-  padding: 1ch;
-  border: 1px solid brown;
+  padding-left: 20px;
+  padding-right: 20px;
   color: white;
-  background: transparent;
+  background: #5d575730;
   border-radius: 15%;
   height: 48px;
+  border: none;
 }
 
 #image-iris-button {

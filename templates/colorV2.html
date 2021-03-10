@@ -16,29 +16,65 @@
     <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tangerine&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@300&display=swap" rel="stylesheet">
-    <!--Stylesheets-->
+    <!--Stylesheets -->
     <link rel="stylesheet" href={{ url_for('static', filename='css/colorwheelV3.css')}}/>
     <link rel="stylesheet" href={{ url_for('static', filename='css/ham_nav.css')}} />
 
-    <!-- javascript -->
+    <!-- javascript-->
 
       <script type="text/javascript" src={{ url_for('static', filename='js/ham_nav.js')}}></script>
       <script type="text/javascript" src={{ url_for('static', filename='js/wheelDraw.js')}}></script>
       <script type="text/javascript" src={{ url_for('static', filename='js/color_calc.js')}}></script>
       <script type="text/javascript" src={{ url_for('static', filename='js/tabs.js')}}></script>
       <script type="text/javascript" src={{ url_for('static', filename='js/typeface.js')}}></script>
+    <!-- TESTING LOCAL
+
+    <link rel="stylesheet" href="../static/css/colorwheelV3.css"/>
+    <link rel="stylesheet" href="../static/css/ham_nav.css"/>
+    <script type="text/javascript" src="../static/js/ham_nav.js"></script>
+    <script type="text/javascript" src="../static/js/wheelDraw.js"></script>
+    <script type="text/javascript" src="../static/js/color_calc.js"></script>
+    <script type="text/javascript" src="../static/js/tabs.js"></script>
+    <script type="text/javascript" src="../static/js/typeface.js"></script>
+  -->
 
     <title>Contrast and Color</title>
 </head>
 <body id="body">
   <!-- NAV BAR -->
 <nav class='ham_nav' id="my_nav">
-       <a class="ham_home_link" id="nav-hero" href="/" aria-label="home Sound and Silence"><image src={{ url_for('static', filename='images/SAS_logo.png')}} id="hero_image" alt="A sillouette of a head with gaming headphones on."></image></a>
+       <a class="ham_home_link" id="nav-hero" href="/" aria-label="home Sound and Silence">
+
+
+         <image  src={{ url_for('static', filename='images/SAS_logo.png')}}
+                 id="hero_image"
+                 alt="A sillouette of a head with gaming headphones on." />
+
+
+        </a>
       <div class="nav_link_menu" id="nav_link_menu">
 
-         <div class="flex-center">
-         <a  class="ham_link" href="/">Sound and Silence</a>
-          <a  class="ham_link" href="/asl">American Sign Language</a>
+         <div class="nav-div-links">
+           <a class="ham_link"
+              id="CC_link"
+              aria-label="Color and Contrast"
+              href="#">
+              <i class="fas fa-paint-brush"></i>
+                CC</a>
+          <a class="ham_link"
+              href="/"
+              id="SS_link"
+              aria-label="Sound and Silence"
+              title="Sound and Silence">
+              <i class="fas fa-assistive-listening-systems"></i>
+              SS</a>
+          <a  class="ham_link"
+               id="ASL_link"
+               href="/asl"
+               aria-label="American Sign Language"
+               title="American Sign Language">
+               <i class="fas fa-american-sign-language-interpreting"></i>
+               ASL</a>
 
        </div>
       </div>
